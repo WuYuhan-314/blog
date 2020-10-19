@@ -183,10 +183,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-07 14:44:51 / Modified: 16:34:59" itemprop="dateCreated datePublished" datetime="2020-10-07T14:44:51+08:00">2020-10-07</time>
+              <time title="Created: 2020-10-07 14:44:51" itemprop="dateCreated datePublished" datetime="2020-10-07T14:44:51+08:00">2020-10-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-10-19 14:15:29" itemprop="dateModified" datetime="2020-10-19T14:15:29+08:00">2020-10-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -208,8 +214,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Donload-file"><a href="#Donload-file" class="headerlink" title="Donload file"></a>Donload file</h1><p> <a href="https://box.nju.edu.cn/f/b8d6d592f5384089b064/" target="_blank" rel="noopener">https://box.nju.edu.cn/f/b8d6d592f5384089b064/</a></p>
-<h1 id="preview"><a href="#preview" class="headerlink" title="preview"></a>preview</h1><div class="pdfobject-container" data-target="https://box.nju.edu.cn/f/b8d6d592f5384089b064/" data-height="800px"></div>
+          <h1 id="donload-file">Donload file</h1>
+<p>https://box.nju.edu.cn/f/b8d6d592f5384089b064/ # preview <div class="pdfobject-container" data-target="https://box.nju.edu.cn/f/b8d6d592f5384089b064/" data-height="800px"></div></p>
+<h1 id="introduction">Introduction</h1>
+<p>When I read <em>The principle of quantum mechanics</em>, Dirac introduced the bra vector by dual space instead of inner product. Hence, I decide to investigate the relationship between them.</p>
+<p>In this article, the traditional dual space <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span> will be firstly presented; then I will show that every linear function can be represented by inner product,for example <span class="math display">\[\exists \alpha \in \mathbf{V}, f(\beta)=\langle{\alpha}|{\beta}\rangle,\forall \beta \in \mathbf{V}\]</span> Then, we will continue to define a linear transformation <span class="math inline">\(\mathcal{A^*}\)</span>on <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span> by <span class="math inline">\(\mathcal{A^*}(\alpha_{i}^*)(\beta)=\alpha_{i}^*(\mathcal{A}(\beta))\)</span>, and show its relation with <span class="math inline">\(\mathcal{A}\)</span>. By this process, readers can have a closer view on hermitian conjugate. Also, it can help us to have a better understanding of hermitian operator in quantum mechanics.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2020/10/07/Dual-space-and-inner-product/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -280,7 +297,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Curriculum-Vitae-Yuhan-Wu"><a href="#Curriculum-Vitae-Yuhan-Wu" class="headerlink" title="Curriculum Vitae: Yuhan Wu"></a>Curriculum Vitae: Yuhan Wu</h1><p>Email: <a href="mailto:wuyuhan@smail.nju.edu.cn">wuyuhan@smail.nju.edu.cn</a><br>Personal website(Updating): <a href="https://yuhanwu314.github.io/blog/">https://yuhanwu314.github.io/blog/</a></p>
+          <h1 id="curriculum-vitae-yuhan-wu">Curriculum Vitae: Yuhan Wu</h1>
+<p>Email: wuyuhan@smail.nju.edu.cn Personal website(Updating): https://yuhanwu314.github.io/blog/
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/10/07/cv/#more" rel="contents">
@@ -488,6 +506,61 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

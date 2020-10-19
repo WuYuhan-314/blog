@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yuhanwu314.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Donload file https:&#x2F;&#x2F;box.nju.edu.cn&#x2F;f&#x2F;b8d6d592f5384089b064&#x2F; preview">
+  <meta name="description" content="Donload file https:&#x2F;&#x2F;box.nju.edu.cn&#x2F;f&#x2F;b8d6d592f5384089b064&#x2F; # preview  Introduction When I read The principle of quantum mechanics, Dirac introduced the bra vector by dual space instead of inner pr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dual space and inner product">
 <meta property="og:url" content="https://yuhanwu314.github.io/blog/2020/10/07/Dual-space-and-inner-product/index.html">
 <meta property="og:site_name" content="Yuhan Wu&#39;s personal website">
-<meta property="og:description" content="Donload file https:&#x2F;&#x2F;box.nju.edu.cn&#x2F;f&#x2F;b8d6d592f5384089b064&#x2F; preview">
+<meta property="og:description" content="Donload file https:&#x2F;&#x2F;box.nju.edu.cn&#x2F;f&#x2F;b8d6d592f5384089b064&#x2F; # preview  Introduction When I read The principle of quantum mechanics, Dirac introduced the bra vector by dual space instead of inner pr">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-07T06:44:51.000Z">
-<meta property="article:modified_time" content="2020-10-07T08:34:59.298Z">
+<meta property="article:modified_time" content="2020-10-19T06:15:29.511Z">
 <meta property="article:author" content="Yuhan Wu">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -188,10 +188,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-07 14:44:51 / Modified: 16:34:59" itemprop="dateCreated datePublished" datetime="2020-10-07T14:44:51+08:00">2020-10-07</time>
+              <time title="Created: 2020-10-07 14:44:51" itemprop="dateCreated datePublished" datetime="2020-10-07T14:44:51+08:00">2020-10-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-10-19 14:15:29" itemprop="dateModified" datetime="2020-10-19T14:15:29+08:00">2020-10-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -213,8 +219,114 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Donload-file"><a href="#Donload-file" class="headerlink" title="Donload file"></a>Donload file</h1><p> <a href="https://box.nju.edu.cn/f/b8d6d592f5384089b064/" target="_blank" rel="noopener">https://box.nju.edu.cn/f/b8d6d592f5384089b064/</a></p>
-<h1 id="preview"><a href="#preview" class="headerlink" title="preview"></a>preview</h1><div class="pdfobject-container" data-target="https://box.nju.edu.cn/f/b8d6d592f5384089b064/" data-height="800px"></div>
+        <h1 id="donload-file">Donload file</h1>
+<p>https://box.nju.edu.cn/f/b8d6d592f5384089b064/ # preview <div class="pdfobject-container" data-target="https://box.nju.edu.cn/f/b8d6d592f5384089b064/" data-height="800px"></div></p>
+<h1 id="introduction">Introduction</h1>
+<p>When I read <em>The principle of quantum mechanics</em>, Dirac introduced the bra vector by dual space instead of inner product. Hence, I decide to investigate the relationship between them.</p>
+<p>In this article, the traditional dual space <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span> will be firstly presented; then I will show that every linear function can be represented by inner product,for example <span class="math display">\[\exists \alpha \in \mathbf{V}, f(\beta)=\langle{\alpha}|{\beta}\rangle,\forall \beta \in \mathbf{V}\]</span> Then, we will continue to define a linear transformation <span class="math inline">\(\mathcal{A^*}\)</span>on <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span> by <span class="math inline">\(\mathcal{A^*}(\alpha_{i}^*)(\beta)=\alpha_{i}^*(\mathcal{A}(\beta))\)</span>, and show its relation with <span class="math inline">\(\mathcal{A}\)</span>. By this process, readers can have a closer view on hermitian conjugate. Also, it can help us to have a better understanding of hermitian operator in quantum mechanics. <a id="more"></a> # Linear function and dual space</p>
+<h2 id="linear-function">Linear function</h2>
+<div class="defi">
+<p><strong>Definition 1</strong>. <em>Linear function: <span class="math inline">\(\mathbf{V}\)</span>is a linear space, eg. <span class="math inline">\(\mathbf{R^n}\)</span>, and <span class="math inline">\(f:\mathbf{V}\to \mathbf{F}\)</span>, if for all <span class="math inline">\(\alpha,\beta \in \mathbf{V}\)</span> and <span class="math inline">\(a,b \in \mathbf{F}\)</span>, <span class="math inline">\(f(a\alpha+b+\beta)=af(\alpha)+bf(\beta)\)</span>,then <span class="math inline">\(f\)</span> is a linear function.</em></p>
+</div>
+<p>Here we want to show that all linear functions {<span class="math inline">\(f: \mathbf{V}\to \mathbf{F}\)</span> } form a linear space <span class="math inline">\(V^*\)</span>={<span class="math inline">\(f\)</span>:<span class="math inline">\(\mathbf{V}\to \mathbf{F}\)</span>,and <span class="math inline">\(f\)</span> is linear},let's check it:</p>
+<p>Suppose <span class="math inline">\(f_1,f_2\in \mathbf{V*}\)</span>, we need to verify that <span class="math inline">\(f_1+ f_2\in \mathbf{V^*}\)</span>, and <span class="math inline">\(kf_1\in \mathbf{V^*}\)</span> <span class="math display">\[\begin{aligned}
+        (f_1+f_2)(a\alpha+b\beta)&amp;=f_1(a\alpha+b\beta)+f_2(a\alpha+b\beta)\\
+        &amp;=af_1(\alpha)+bf_1(\beta)+af_2(\alpha)+bf_2(\alpha)\\
+        &amp;=a(f_1+f_2)(\alpha)+b(f_1+f_2)(\beta)
+    \end{aligned}\]</span> Similarly, we can also prove that <span class="math inline">\(kf_1 \in \mathbf{V^*}\)</span>; therefore, <span class="math inline">\(\mathbf{V^*}\)</span> is also a linear space.</p>
+<h2 id="dual-space">Dual space</h2>
+<p>Now our task is to find the basis of <span class="math inline">\(\mathbf{V^*}\)</span>.</p>
+<p>Suppose that <span class="math inline">\(\alpha_1,\alpha_2, \dots, \alpha_n\)</span> are orthonormal basis of vector space of <span class="math inline">\(\mathbf{V}\)</span>. Then we define a mapping <span class="math inline">\(\sigma: \mathbf{V} \to \mathbf{V^*}, \sigma(\alpha_i)=\alpha_i^*\)</span>, with property: <span class="math display">\[\alpha_i^*(\alpha_j)=\delta_{ij}\]</span></p>
+<p>Here <span class="math inline">\(\alpha_i^*\)</span> is a linear function, and the motivation of the definition is <span class="math inline">\(\langle{\alpha_{i}}|{\alpha_{j}}\rangle=\delta_{ij}\)</span>, and we want to check <span class="math inline">\(\{\alpha_i^*\}\)</span> is the basis of <span class="math inline">\(\mathbf{V^*}\)</span></p>
+<p>Firstly, let's have a look on <span class="math inline">\(\alpha_{i}^*\)</span> , suppose <span class="math inline">\(\beta= \sum_{i=1}^{n}b_i\alpha_{i}\in \mathbf{V}\)</span> <span class="math display">\[\alpha_{i}^*(\beta)=\alpha_{i}^*(\sum_{j=1}^{n}\alpha_{j})=\sum_{j=1}^{n}b_j\alpha_{i}^*(\alpha_{j})=\sum_{j=1}^{n}b_j \delta_{ij}=b_i\]</span></p>
+<p>Then, <span class="math inline">\(\forall f \in \mathbf{\mathbf{V}^*}\)</span>,<span class="math inline">\(\forall \beta=\sum_{i =1}^nb_i\alpha_{i}\in \mathbf{V}\)</span> <span class="math display">\[\begin{aligned}
+        f(\beta)&amp;=\sum_{i =1}^nb_if(\alpha_{i})\\
+        &amp;=\sum_{i =1}^n\alpha_{i}^*(\beta)f(\alpha_{i})\\
+        &amp;=\sum_{i =1}^n f(\alpha_{i})\alpha_{i}^*(\beta)
+    \end{aligned}\]</span></p>
+<p>Since <span class="math inline">\(\beta\)</span> is an arbitrary vector in <span class="math inline">\(\mathbf{V}\)</span>, then : <span class="math display">\[f=\sum_{i =1}^nf(\alpha_{i})\alpha_{i}^*\]</span></p>
+<p>We can conclude that <span class="math inline">\(\{\alpha_{i}^*\}\)</span> form a basis of <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span></p>
+<h2 id="double-duality">Double duality</h2>
+<p>Let's consider a dual space of the dual space <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span>. <span class="math display">\[\mathbf{V}\to \mathbf{V}^* \to\mathbf{V}^{**}\]</span> and, <span class="math display">\[\alpha_{i}\to \alpha_{i}^* \to \alpha_{i}^{**}\]</span> with property: <span class="math display">\[\alpha_{i}^*(\alpha_{j})=\delta_{ij} \quad \alpha_{i}^{**}(\alpha_{j}^*)=\delta_{ij}\]</span> Therefore, <span class="math display">\[\alpha_{i}^{**}(\alpha_{j}^*)=\alpha_{i}^*(\alpha_{j})=\delta_{ij}\]</span> Suppose, <span class="math inline">\(\alpha=\sum_{i =1}^na_i \alpha_{i}, \quad \beta = \sum_{j =1}^nb_j \alpha_{j}\)</span> <span class="math display">\[\begin{aligned}
+         \alpha^{**}(\beta^*)=\alpha^{**}(\sum_{j =1}^nb_j\alpha_{j}^*)&amp;=\sum_{i =1}^na_i\alpha_{i}^{**}(\sum_{j =1}^nb_j\alpha_{j}^*)\\
+         &amp;=\sum_{i,j =1}^na_i b_j \alpha_{i}^{**}(\alpha_{j}^*)\\
+         &amp;=\sum_{i,j =1}^na_i b_j \delta_{ij}\\
+         &amp;=\sum_{j =1}^na_j b_j\\
+     \end{aligned}\]</span></p>
+<p>Im the same way, we calculate: <span class="math display">\[\begin{aligned}
+         \beta^*(\alpha)&amp;=\sum_{j =1}^nb_j\alpha_{j}^*(\sum_{i =1}^na_i\alpha_{i})\\
+         &amp;=\sum_{i,j =1}^na_i b_j \alpha_{j}^*(a_i)\\
+         &amp;=\sum_{i,j =1}^na_i b_j \delta_{ij}\\
+         &amp;=\sum_{j =1}^na_j b_j
+     \end{aligned}\]</span></p>
+<p>Hence, <span class="math display">\[\alpha^{**}(\beta^*)=\beta^*(\alpha)\]</span> and we can conclude<span class="math inline">\(\mathbf{V}=\mathbf{V}^{**}\)</span></p>
+<h1 id="inner-product-and-dual-space">Inner product and Dual space</h1>
+<p>In this section, we are going to study the relation between dual space and inner product.</p>
+<h2 id="linear-function-represented-by-inner-product">Linear function represented by inner product</h2>
+<p>Firstly, we need to assume that the linear space <span class="math inline">\(\mathbf{V}\)</span> is equipped with inner product <span class="math inline">\(\langle{\cdot}|{\cdot}\rangle\)</span>, and <span class="math inline">\(\alpha_1, \alpha_2, \dots, \alpha_n\)</span> form an orthonormal basis of <span class="math inline">\(\mathbf{V}\)</span></p>
+<p>As the definition of the basis of dual space <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span>, <span class="math inline">\(\alpha_{i}^*(\alpha_{j})=\delta_{ij}=\langle{\alpha_{i}}|{\alpha_{j}}\rangle\)</span>, we can hypothesis that for any linear function in <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span>, there exists a unique vector <span class="math inline">\(\alpha\)</span>, such that <span class="math inline">\(\forall \beta \in \mathbf{V}\)</span>, and <span class="math display">\[f(\beta)=\langle{\alpha}|{\beta}\rangle\]</span></p>
+<p>Let's prove it. To avoid confusion, we firstly complete the proof in real vector space,i.e <span class="math inline">\(\mathbf{F}=\mathbf{R}\)</span></p>
+<p>As we hypothesis above, <span class="math inline">\(\alpha_1, \alpha_2, \dots, \alpha_n\)</span> and <span class="math inline">\(\alpha_1^*, \alpha_2^*, \dots, \alpha_n^*\)</span> are orthonormal bases of <span class="math inline">\(\mathbf{V}\)</span> and <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span>, with the property <span class="math inline">\(\alpha_{i}^*(\alpha_{j})=\delta_{ij}=\langle{\alpha_{i}}|{\alpha_{j}}\rangle\)</span>. Suppose that <span class="math inline">\(\beta= \sum_{i =1}^nb_i\alpha_{i}\)</span>, and multiplied by <span class="math inline">\(\langle{\alpha_{j}}|\)</span> from left side, we can yield: <span class="math display">\[\langle{\alpha_{j}}|{\beta}\rangle=\sum_{i =1}^nb_i\langle{\alpha_{j}}|{\alpha_{i}}\rangle=\sum_{i =1}^nb_i\delta_{ij}=b_j\]</span> Then, <span class="math display">\[\begin{aligned}
+        f(\beta)=f(\sum_{j =1}^nb_j\alpha_{j})&amp;=\sum_{j =1}^nf(\alpha_{j})\\
+        &amp;=\sum_{j =1}^n\langle{\alpha_{j}}|{\beta}\rangle f(\alpha_{j})\\
+        &amp;=\langle{\sum_{j =1}^nf(\alpha_{j})\alpha_{j}}|{\beta}\rangle\\
+        &amp;=\langle{\alpha}|{\beta}\rangle\quad \text{,where}\quad \alpha= \sum_{j =1}^nf(\alpha_{j})\alpha_{j}
+    \end{aligned}\]</span></p>
+<p>Then let's discuss it in complex vector space, i.e.<span class="math inline">\(\mathbf{F}=\mathbf{C}\)</span>, and we have inner product: <span class="math display">\[\langle{\alpha}|{\beta}\rangle=\overline{\langle{\beta}|{\alpha}\rangle}\]</span> and, <span class="math display">\[\begin{aligned}
+        \langle{a\alpha}|{\beta}\rangle=\bar{a}\langle{\alpha}|{\beta}\rangle\\
+        \langle{\alpha}|{b\beta}\rangle=b\langle{\alpha}|{\beta}\rangle
+    \end{aligned}\]</span> In the similar way, <span class="math display">\[\begin{aligned}
+        f(\beta)&amp;=\sum_{j =1}^n\langle{\alpha_{j}}|{\beta}\rangle f(\alpha_{j})\\
+        &amp;=\langle{\sum_{j =1}^n\overline{f(\alpha_{j})}\alpha_{j}}|{\beta}\rangle\\
+        &amp;=\langle{\alpha}|{\beta}\rangle\quad \text{, where }\quad \alpha=\sum_{j =1}^n\overline{f(\alpha_{j})}\alpha_{j}
+    \end{aligned}\]</span></p>
+<h2 id="generalization-to-infinite-dimensional-space">Generalization to infinite dimensional space</h2>
+<p>In the last section, we discuss the problem in a finite dimensional space; now we want to generalize it to infinite dimensional vector space. And this is the famous Riesz theorem. This part mainly refers to <em>Applied functional analysis Vol.1</em>, written by Eberhard Zeidler.</p>
+<p>Firstly, hypothesis that <span class="math inline">\(\mathbf{X}\)</span> is a Banach space equipped with inner product <span class="math inline">\(\langle{\cdot}|{\cdot}\rangle\)</span> and norm <span class="math inline">\(||u||^2=\langle{u}|{u}\rangle\)</span>. Then, <span class="math inline">\(\forall f\in \mathbf{X}\)</span>, there exists a unique <span class="math inline">\(v\in\mathbf{X}\)</span>, such that <span class="math inline">\(f(u)=\langle{v}|{u}\rangle,\forall u \in \mathbf{X}\)</span> and, <span class="math inline">\(||f||=||v||\)</span> ,where <span class="math inline">\(||f||=\sup_{||u||=1}|f(u)|\)</span></p>
+<p>1st step, the uniqueness of <span class="math inline">\(v\)</span>. Assume <span class="math inline">\(\exists v_0,v_1\)</span> satisfy the condition, such that: <span class="math display">\[f(u)=\langle{v_0}|{u}\rangle=\langle{v_1}|{u}\rangle \quad \forall u \in \mathbf{X}\]</span> <span class="math inline">\(\Longrightarrow \langle{v_0-v_1}|{u}\rangle=0 \quad \forall u \in \mathbf{X}\)</span>, let <span class="math inline">\(u=v_0-v_1\)</span>, then <span class="math inline">\(\langle{v_0-v_1}|{v_0-v_1}\rangle=||v_0-v_1||^2=0\)</span> <span class="math inline">\(\Longrightarrow \quad v_0=v_1\)</span></p>
+<p>Second step, existence of <span class="math inline">\(v\)</span></p>
+<p>For any <span class="math inline">\(f\in \mathbf{X^*}\)</span>, set <span class="math inline">\(N(f)=\{u\in \mathbf{X},f(u)=0\}\)</span> and <span class="math inline">\(N(f)\)</span> is a subspace of <span class="math inline">\(\mathbf{X}\)</span>. Suppose <span class="math inline">\(N(f)\neq \mathbf{X}\)</span>, or otherwise <span class="math inline">\(f=0\)</span>.</p>
+<p>Therefore, we can find <span class="math inline">\(u_0\in N(f)^{\bot}\)</span> with <span class="math inline">\(u_0\neq 0\)</span>, and this is the key to proof. To be honest, it is not an easy job to find such element <span class="math inline">\(u_0\)</span>, and I can write another article to show how to find <span class="math inline">\(u_0\)</span></p>
+<p>Assume <span class="math inline">\(f(u_0)=1\)</span>, otherwise take <span class="math inline">\(\bar{u_0}=\frac{u_0}{f(u_0)}\)</span>, then <span class="math inline">\(f(\bar{u_0})=1\)</span> Then, we have <span class="math display">\[f(u-f(u)u_0)=f(u)-f(u)f(u_0)=0 \quad\forall u\in \mathbf{X}\]</span> So <span class="math inline">\(u-f(u)u_0\in N(f)\)</span>, by decomposition theorem, there exists <span class="math inline">\(w\in N(f)\)</span> such that <span class="math display">\[u-f(u)u_0=w\Longrightarrow u = f(u)u_0+w\]</span> Multiply <span class="math inline">\(u_0\)</span> from left side, and notice that <span class="math inline">\(u_0\in N(f)^{\bot}\)</span>, <span class="math display">\[\langle{u_0}|{u}\rangle=f(u)\langle{u_0}|{u_0}\rangle\]</span></p>
+<p>Therefore, <span class="math display">\[f(u)=\langle{\frac{u_0}{\langle{u_0}|{u_0}\rangle}}|{u}\rangle \quad \text{with} \quad v=\frac{u_0}{\langle{u_0}|{u_0}\rangle}\]</span></p>
+<p>Last step <span class="math inline">\(||f||=||v||\)</span>,let <span class="math inline">\(||u||=1\)</span></p>
+<p><span class="math inline">\(|f(u)|=|\langle{v}|{u}\rangle|\leqslant ||u||\cdot||v||, \forall ||u||=1 \Longrightarrow ||f||\leqslant ||v||\)</span></p>
+<p>Then observe <span class="math inline">\(f(\frac{v}{||v||})=\langle{v}|{\frac{v}{||v||}}\rangle=||v||\Longrightarrow ||f||\geqslant||v||\)</span>, to conclude <span class="math display">\[||f||=||v||\]</span></p>
+<h1 id="linear-transformation-on-mathbfmathbfv">Linear transformation on <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span></h1>
+<h2 id="introduction-of-mathcala">Introduction of <span class="math inline">\(\mathcal{A^*}\)</span></h2>
+<p><span class="math inline">\(\mathcal{A}\)</span> is a linear transformation on <span class="math inline">\(\mathbf{V}\)</span>, and we want to define a linear transformation on <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span></p>
+<p>Define: <span class="math inline">\(f\in \mathbf{\mathbf{V}^*}\)</span> , <span class="math inline">\(\mathcal{A^*}f=f\mathcal{A}\)</span>, i.e. <span class="math inline">\(\mathcal{A^*}f(\alpha)=f\mathcal{A}(\alpha)=f(\mathcal{A}\alpha)\)</span>.</p>
+<p>Now, we need to prove <span class="math inline">\(\mathcal{A^*}\)</span> is a linear transformation on <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span> First step, <span class="math inline">\(\mathcal{A^*}f=f\mathcal{A}\in \mathbf{\mathbf{V}^*}\)</span> <span class="math display">\[\begin{aligned}
+         f\mathcal{A}(\alpha+\beta)&amp;=f(\mathcal{A}\alpha+\mathcal{A}\beta)\\
+         &amp;=f(\mathcal{A}\alpha)+f(\mathcal{A}\beta)\\
+         &amp;=f\mathcal{A}(\alpha)+f\mathcal{A}(\beta)\\
+         &amp;=\mathcal{A^*}f(\alpha)+\mathcal{A^*}f(\beta)
+     \end{aligned}\]</span> and <span class="math display">\[\mathcal{A^*}f(k\alpha)=f(\mathcal{A}(k\alpha))=f(k\mathcal{A}\alpha)=kf(\mathcal{A}\alpha)=k\mathcal{A^*}f(\alpha)\]</span></p>
+<p>Therefore, <span class="math inline">\(\mathcal{A^*}f\)</span> is a linear function, i.e. <span class="math inline">\(\mathcal{A^*}f\in \mathbf{\mathbf{V}^*}\)</span></p>
+<p>Second step, we need to verify that <span class="math inline">\(\mathcal{A*}\)</span> is a linear transformation in <span class="math inline">\(\mathbf{V^*}\)</span>,<span class="math inline">\(\forall f,g\in \mathbf{\mathbf{V}^*}\)</span>,and <span class="math inline">\(\alpha \in \mathbf{V}\)</span> <span class="math display">\[\begin{aligned}
+         &amp;\mathcal{A^*}(f+g)(\alpha)=(f+g)(\mathcal{A}\alpha)=f(\mathcal{A}\alpha)+g(\mathcal{A}\alpha)=(\mathcal{A^*}f+\mathcal{A^*}g)(\alpha)\\
+         &amp;\mathcal{A^*}(kf)(\alpha)=kf(\mathcal{A}\alpha)=(k\mathcal{A^*}f)(\alpha)
+     \end{aligned}\]</span> Therefore, <span class="math inline">\(\mathcal{A^*}\)</span> is a linear transformation on <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span></p>
+<h2 id="matrix-representation-of-mathcala">Matrix representation of <span class="math inline">\(\mathcal{A^*}\)</span></h2>
+<p>Firstly, let's review the matrix representation of the linear transformation in <span class="math inline">\(\mathbf{V}\)</span>. Suppose <span class="math inline">\(\mathcal{A}\)</span> is a linear transformation on <span class="math inline">\(\mathbf{V}\)</span>, and its matrix representation is <span class="math inline">\(\mathbf{A}\)</span>, whose matrix elements are <span class="math inline">\(\mathbf{A_{ij}}\)</span>. Then, we have <span class="math display">\[\mathcal{A}(\alpha_1,\alpha_2,\cdots,\alpha_n)=(\alpha_1,\alpha_2,\cdots,\alpha_n)\mathbf{A},i.e.\quad \mathcal{A}\alpha_{i}=\sum_{j =1}^n\mathbf{A_{ji}}\alpha_{j}\]</span> Similarly, assume <span class="math inline">\(\{\alpha_1^*,\alpha_2^*,\cdots,\alpha_n^*\}\)</span> is a basis of <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span>, <span class="math inline">\(\mathcal{A^*}\)</span> is a linear linear transformation on <span class="math inline">\(V^*\)</span> and <span class="math inline">\(\mathbf{A}\)</span> is the matrix representation with elements <span class="math inline">\(\mathbf{A_{ij}}\)</span> <span class="math display">\[\mathcal{A^*}(\alpha_1^*,\alpha_2^*,\cdots,\alpha_n^*)=(\alpha_1^*,\alpha_2^*,\cdots,\alpha_n^*)\mathbf{A^*},i.e.\quad \mathcal{A^*}\alpha_{i}^*=\sum_{j =1}^n\mathbf{A_{ji}^*}\alpha_{j}^*\]</span></p>
+<p>Let's begin from real vector space, recall that <span class="math inline">\(\forall f \in \mathbf{\mathbf{V}^*}\)</span>, <span class="math inline">\(f=\sum_{j =1}^nf(\alpha_{j})\alpha_{j}^*\)</span>, <span class="math display">\[\begin{aligned}
+         \mathcal{A^*}(\alpha_{i}^*)&amp;=\alpha_{i}^*\mathcal{A}\\
+         &amp;=\sum_{j =1}^n(\alpha_{i}^*(\mathcal{A}(\alpha_{j})))\alpha_{j}^*\\
+         &amp;=\sum_{j =1}^n\alpha_{i}^*(\sum_{k =1}^n\mathbf{A_{kj}}\alpha_k)\alpha_{j}^*\\
+         &amp;=\sum_{j,k =1}^n\mathbf{A_{kj}}\alpha_{i}^*(\alpha_k)\alpha_{j}^*=\sum_{j,k =1}^n\mathbf{A_{kj}}\delta_{ik}\alpha_{j}^*\\
+         &amp;=\sum_{j =1}^n\mathbf{A_{ij}}\alpha_{j}^*=\sum_{j =1}^n\mathbf{A^*_{ji}}\alpha_{j}^*
+     \end{aligned}\]</span> Then, we get <span class="math inline">\(\mathbf{A_{ij}}=\mathbf{A^*_{ji}}\)</span>, which means <span class="math display">\[\mathbf{A^*}=\mathbf{A}^\mathrm{T}\]</span></p>
+<p>Now, let's study it in complex vector space:</p>
+<p>Recall that the linear function can be represented by inner product, so the element <span class="math inline">\(\alpha_{i}^*\)</span> in <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span> can be viewed as a bra vector <span class="math inline">\(\langle{\alpha_{i}}|\)</span>, and <span class="math inline">\(\alpha_{j}\)</span> in <span class="math inline">\(\mathbf{V}\)</span> is a ket vector <span class="math inline">\(|{\alpha_{j}}\rangle\)</span>. For example, <span class="math inline">\(\mathcal{A^*}(\alpha_{i}^*)=\langle{\sum_{j =1}^nA_{ji^*}\alpha_{j}^*}|\)</span>, let's rewrite the formula above: <span class="math display">\[\begin{aligned}
+        \mathcal{A^*}(\alpha_{i}^*)&amp;=\alpha_{i}^*\mathcal{A}\\
+        &amp;=\sum_{j =1}^n(\alpha_{i}^*(\mathcal{A}(\alpha_{j})))\alpha_{j}^*\\
+        &amp;=\sum_{j =1}^n\langle{\alpha_{i}}|{\mathcal{A}\alpha_{j}}\rangle\langle{\alpha_{j}}|\\
+        &amp;=\sum_{j,k =1}^n\langle{\alpha_{i}}|{\sum_{k =1}^n\mathbf{A_{kj}\alpha_k}}\rangle\langle{\alpha_{j}}|\\
+        &amp;=\sum_{j,k =1}^n\mathbf{A_{kj}}\langle{\alpha_{i}}|{\alpha_k}\rangle\langle{\alpha_{j}}|=\sum_{j,k =1}^n\mathbf{A_{kj}}\delta_{ik}\langle{\alpha_{j}}|\\
+        &amp;=\sum_{j =1}^n\mathbf{A_ij}\langle{\alpha_{j}}|\\
+        &amp;=\langle{\sum_{j =1}^n\overline{\mathbf{A_{ij}}}\alpha_{j}}|
+     \end{aligned}\]</span> Therefore, <span class="math inline">\(\overline{\mathbf{A_{ij}}}=\mathbf{A_{ji}^*}\)</span>, which means <span class="math display">\[\mathbf{A^*}=\overline{\mathbf{A}}^{\mathrm{T}}\]</span> This is why many math text books using symbol<span class="math inline">\(&quot;*&quot;\)</span>, to represent Hermitian conjugate. For example, <span class="math inline">\(\mathbf{A}\)</span> is a Hermitian matrix, iff <span class="math inline">\(\mathbf{A}=\mathbf{A^*}\)</span>, i.e. <span class="math inline">\(\mathbf{A_{ij}}=\overline{\mathbf{A_{ji}}}\)</span></p>
+
     </div>
 
     
@@ -294,7 +406,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Donload-file"><span class="nav-number">1.</span> <span class="nav-text">Donload file</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#preview"><span class="nav-number">2.</span> <span class="nav-text">preview</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#donload-file"><span class="nav-number">1.</span> <span class="nav-text">Donload file</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-function"><span class="nav-number">2.1.</span> <span class="nav-text">Linear function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dual-space"><span class="nav-number">2.2.</span> <span class="nav-text">Dual space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-duality"><span class="nav-number">2.3.</span> <span class="nav-text">Double duality</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inner-product-and-dual-space"><span class="nav-number">3.</span> <span class="nav-text">Inner product and Dual space</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-function-represented-by-inner-product"><span class="nav-number">3.1.</span> <span class="nav-text">Linear function represented by inner product</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generalization-to-infinite-dimensional-space"><span class="nav-number">3.2.</span> <span class="nav-text">Generalization to infinite dimensional space</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-transformation-on-mathbfmathbfv"><span class="nav-number">4.</span> <span class="nav-text">Linear transformation on \(\mathbf{\mathbf{V}^*}\)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-of-mathcala"><span class="nav-number">4.1.</span> <span class="nav-text">Introduction of \(\mathcal{A^*}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-representation-of-mathcala"><span class="nav-number">4.2.</span> <span class="nav-text">Matrix representation of \(\mathcal{A^*}\)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -427,6 +539,61 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
