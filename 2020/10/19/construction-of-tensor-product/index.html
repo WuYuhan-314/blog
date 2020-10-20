@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yuhanwu314.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction This article is aimed to present a construction of tensor product in mathematicians&#39; way with strong motivation. Firstly, we review the property of dual space and bilinear function. Then">
+<meta property="og:type" content="article">
+<meta property="og:title" content="construction of tensor product">
+<meta property="og:url" content="https://yuhanwu314.github.io/blog/2020/10/19/construction-of-tensor-product/index.html">
+<meta property="og:site_name" content="Yuhan Wu&#39;s personal website">
+<meta property="og:description" content="Introduction This article is aimed to present a construction of tensor product in mathematicians&#39; way with strong motivation. Firstly, we review the property of dual space and bilinear function. Then">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-19T06:47:02.000Z">
+<meta property="article:modified_time" content="2020-10-19T07:12:23.307Z">
+<meta property="article:author" content="Yuhan Wu">
+<meta property="article:tag" content="math">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yuhanwu314.github.io/blog/2020/10/19/construction-of-tensor-product/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>construction of tensor product | Yuhan Wu's personal website</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yuhan Wu's personal website</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yuhanwu314.github.io/blog/2020/10/19/construction-of-tensor-product/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+      <meta itemprop="name" content="Yuhan Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuhan Wu's personal website">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          construction of tensor product
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-19 14:47:02 / Modified: 15:12:23" itemprop="dateCreated datePublished" datetime="2020-10-19T14:47:02+08:00">2020-10-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/lecture-notes/" itemprop="url" rel="index"><span itemprop="name">lecture notes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="introduction">Introduction</h1>
+<p>This article is aimed to present a construction of tensor product in mathematicians' way with strong motivation. Firstly, we review the property of dual space and bilinear function. Then, the tensor product will be constructed as a bilinear function. The main motivation is that we want to construct a linear function of a vector space that are combined with two or more vector spaces, and the combination is the process of construction of tensor product. Finally, the transformation of coordinates in this definition satisfy the definition of usual tensor product. <a id="more"></a></p>
+<h1 id="preparation-dual-space">Preparation: Dual space</h1>
+<p><span class="math inline">\(\mathbf{V}\)</span> is a vector space with dimension n, and <span class="math inline">\(\{\alpha_1,\alpha_2,\cdots,\alpha_n\}\)</span> is a orthonormal basis of <span class="math inline">\(\mathbf{V}\)</span>. All linear functions on <span class="math inline">\(\mathbf{V}\)</span> form a vector space , noted as <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span>. <span class="math inline">\(\alpha_1^*, \alpha_2^*,\cdots, \alpha_n^*\)</span> is the basis of <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span> with property: <span class="math display">\[\alpha_{i}^*(\alpha_{j})=\delta_{ij}\]</span> Let's check it, and only need to verify that <span class="math inline">\(\forall f \in \mathbf{\mathbf{V}^*}\)</span>, can be expanded by <span class="math inline">\(\{\alpha_{i}^*\}\)</span>.</p>
+<div class="proof">
+<p><em>Proof.</em> First of all, <span class="math inline">\(\forall\alpha=\sum_{j =1}^na_j\alpha_{j}\in \mathbf{V}\)</span>, note that , <span class="math display">\[\begin{aligned}
+            \alpha_{i}^*(\alpha)&amp;=\alpha_{i}^*(\sum_{j =1}^na_j\alpha_{j})\\
+            &amp;=\sum_{j =1}^n\alpha_{i}^*(\alpha_{j})a_j\\
+            &amp;=\sum_{j =1}^n\delta_{ij}a_j=a_i
+        \end{aligned}\]</span> Then, <span class="math inline">\(\forall f \in \mathbf{\mathbf{V}^*}\)</span>, <span class="math display">\[\begin{aligned}
+            f(\alpha)&amp;=f(\sum_{i =1}^n\alpha_{i})\\
+            &amp;=\sum_{i =1}^n\alpha_{i}^*(\alpha)f(\alpha_{i})\\
+            &amp;=\sum_{i =1}^nf(\alpha_{i})\alpha_{i}^*(\alpha)
+        \end{aligned}\]</span> ◻</p>
+</div>
+<p>Therefore, <span class="math inline">\(f=\sum_{i =1}^nf(\alpha_{i})\alpha_{i}^*\)</span></p>
+<div class="Def">
+<p><strong>Definition 1</strong>. <em>Double dual space, we can construct the dual space of <span class="math inline">\(\mathbf{\mathbf{V}^*}\)</span>, noted as<span class="math inline">\(\mathbf{V}^{**}\)</span>, and <span class="math inline">\(\{\alpha_{i}^{**}\}\)</span> is the basis with similar property <span class="math inline">\(\alpha_{i}^{**}(\alpha_{j}^{*})=\delta_{ij}\)</span></em></p>
+</div>
+<p>Now, we want to show that the double dual space <span class="math inline">\(\mathbf{V}^{**}\)</span> can be viewed as the vector space <span class="math inline">\(\mathbf{V}\)</span> itself, because the construction of double dual space is independent of the choose of basis. This assertion is quite difficult to understand. If you have read my another article <em>Dual space and inner product</em>, we can understand this from the point of inner product. Although it is very important, reader only need to have a glimpse on it and feel free to jump to the next section.</p>
+<div class="prop">
+<p><strong>Proposition 1</strong>. <em><span class="math inline">\(\forall \alpha^{**}\in \mathbf{V}^{**}\)</span>, and <span class="math inline">\(\forall \beta \in \mathbf{\mathbf{V}^*}\)</span>, we have <span class="math display">\[\alpha^{**}(\beta^*)=\beta^*(\alpha)\]</span></em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math display">\[\begin{aligned}
+            \alpha^{**}(\beta^*)&amp;=\sum_{i =1}^na_i\alpha_{i}^{**}(\sum_{j =1}^nb_j\alpha_{j}^*)\\
+            &amp;=\sum_{i,j =1}^na_ib_j\alpha_{i}^{**}(\alpha_{j}^*)\\
+            &amp;=\sum_{i,j =1}^na_ib_j\delta_{ij}\\
+            &amp;=\sum_{i,j =1}^na_ib_j\alpha_{j}^*(\alpha_{i})\\
+            &amp;=\sum_{j =1}^nb_j\alpha_{j}^*(\sum_{i =1}^na_i\alpha_{i})\\
+            &amp;=\beta^*(\alpha)
+        \end{aligned}\]</span> ◻</p>
+</div>
+<h1 id="bilinear-function-and-tensor-product">Bilinear function and tensor product</h1>
+<p>First of all, we need to review the property of bilinear functions.</p>
+<div class="Def">
+<p><strong>Definition 2</strong>. <em><span class="math inline">\(\alpha,\alpha_1,\alpha_2 \in \mathbf{V}\)</span> and <span class="math inline">\(\beta,\beta_1,\beta_2\in \mathbf{W}\)</span>, bilinear function <span class="math inline">\(f:\mathbf{V}\times\mathbf{W}\to \mathbf{F}\)</span> satisfies <span class="math display">\[\begin{aligned}
+            &amp;f(a_1\alpha_1+a_2\alpha_2,\beta)=a_1f(\alpha_1,beta)+a_2f(\alpha_2,\beta)\\
+            &amp;f(\alpha,b_1\beta_1+b_2\beta_2)=b_1f(\alpha,\beta_1)+b_2f(\alpha,\beta_2)
+        \end{aligned}\]</span></em></p>
+</div>
+<h2 id="motivation">Motivation</h2>
+<p>We want to construct a new vector space <span class="math inline">\(\mathbf{Y}\)</span>, and a unique linear function on <span class="math inline">\(\mathbf{Y}\)</span>, such that <span class="math display">\[f=g\circ h\]</span> Here, bilinear mapping <span class="math inline">\(h\)</span> is the key to construct tensor product.</p>
+<h2 id="construction-of-tensor-product">Construction of tensor product</h2>
+<div class="prop">
+<p><strong>Proposition 2</strong>. <em>All bilinear functions form a linear space, noted as <span class="math inline">\(\mathcal{L}(\mathbf{V,W;F})\)</span> or <span class="math inline">\(\mathcal{L}\)</span> in short.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> We only need to check that if <span class="math inline">\(f_1,f_2\in \mathcal{L}\)</span>, then <span class="math inline">\(f_1+f_2\)</span> and <span class="math inline">\(kf_1 \in \mathcal{L}\)</span>, which means <span class="math inline">\(f_1+f_2\)</span> and <span class="math inline">\(kf_1\)</span> satisfy the condition. Readers can easily finish this by definition, if you have taken the course <em>Mathematical proof</em> or the similar course. If I have enough time, I will finish the verification in appendix. ◻</p>
+</div>
+<p>Instead of constructing the tensor product of <span class="math inline">\(\mathbf{V}\)</span> and <span class="math inline">\(\mathbf{W}\)</span>, we choose to firstly define the tensor product of the dual space<span class="math inline">\(\mathbf{V}^*\)</span> and <span class="math inline">\(\mathbf{W}\)</span>.</p>
+<div class="Def">
+<p><strong>Definition 3</strong>. <em><span class="math inline">\(v^*\in\mathbf{V}^*,w^*\in\mathbf{W}^*\)</span>, define the tensor product <span class="math inline">\({v^*}\otimes{w^*}\)</span> as a bilinear function , with <span class="math inline">\(\alpha\in\mathbf{V},\beta \in \mathbf{W}\)</span> <span class="math display">\[{v^*}\otimes{w^*}(\alpha,\beta)=v^*(\alpha)\cdot w^*(\beta)\]</span> Note: <span class="math inline">\(\otimes\)</span> is a map from <span class="math inline">\(\mathbf{V}^*\times\mathbf{W}^*\)</span> to <span class="math inline">\(\mathcal{L}(\mathbf{L,W;F})\)</span></em></p>
+</div>
+<div class="prop">
+<p><strong>Proposition 3</strong>. <em><span class="math inline">\(\otimes\)</span> is a bilinear map</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Assume <span class="math inline">\(v,v_i^*\in\mathbf{V}^*,w,w_i^*\in\mathbf{W}^*\)</span>, and <span class="math inline">\(\alpha \in \mathbf{V},\beta \in \mathbf{W}\)</span>, verify that <span class="math display">\[ \begin{aligned}
+            {(a_1v_1^*+a_2v_2^*)}\otimes{w^*}(\alpha,\beta)&amp;=(a_1v_1^*+a_2v_2^*)(\alpha)\cdot w^*(\beta)\\
+            &amp;=a_1v_1^*(\alpha)w^*(\beta)+a_2v_2^*(\alpha)w^*(\beta)\\
+            &amp;=a_1{v_1^*}\otimes{w^*}(\alpha,\beta)+a_2{v_2^*}\otimes{w^*}(\alpha,\beta) 
+        \end{aligned}\]</span> Therefore, <span class="math inline">\(\otimes\)</span> is linear in variable <span class="math inline">\(v^*\)</span>; similarly, <span class="math inline">\(\otimes\)</span> is also linear in another variable <span class="math inline">\(W^*\)</span>. Conclude that <span class="math inline">\(\otimes\)</span> is a bilinear map. ◻</p>
+</div>
+<p><span class="math inline">\({\mathbf{V}^*}\otimes{\mathbf{W}^*}\)</span> refers to the space generated by all elements in the form of <span class="math inline">\(v^*\otimes w^*\)</span>. And we want to find the basis of <span class="math inline">\({\mathbf{V}^*}\otimes{\mathbf{W}^*}\)</span>. Since <span class="math inline">\(\{\alpha_{i}^*\}\)</span> and <span class="math inline">\(\{\beta_{j}^*\}\)</span> are bases of <span class="math inline">\(\mathbf{V}^*\)</span> and <span class="math inline">\(\mathbf{W}^*\)</span>, we naturally hypothesis that <span class="math inline">\(\{ {\alpha_{i}^*}\otimes{\beta_{j}^*}\}\)</span> is the basis of <span class="math inline">\({\mathbf{V}^*}\otimes{\mathbf{W}^*}\)</span> Let's check it, recall that <span class="math display">\[f\in \mathbf{V}^*, f=\sum_{i}f(\alpha_{i})\alpha_{i}^*\]</span></p>
+<p>Then, <span class="math display">\[\begin{aligned}
+        {v^*}\otimes{w^*}&amp;=\sum_{i}v^*(\alpha_{i})\alpha_{i}^*\otimes w^*(\beta_{j})\beta_{j}^*\\
+        &amp;=\sum_{i,j}v^*(\alpha_{i})w^*(\beta_{j}){\alpha_{i}^*}\otimes{\beta_{j}^*}
+    \end{aligned}\]</span> Clearly, <span class="math inline">\({\mathbf{V}^*}\otimes{\mathbf{W}^*}\)</span> is a subspace of <span class="math inline">\(\mathcal{L}(\mathbf{V,W;F})\)</span>, here we want to show shat <span class="math display">\[\begin{aligned}
+        {\mathbf{V}^*}\otimes{\mathbf{W}^*}=\mathcal{L}(\mathbf{V,W;F})
+    \end{aligned}\]</span> We only need to prove that <span class="math inline">\(\{ {\alpha_{i}^*}\otimes{\beta_{j}^*}\}\)</span> is a basis of <span class="math inline">\(\mathcal{L}(\mathbf{V,W;F})\)</span>.</p>
+<div class="prop">
+<p><strong>Proposition 4</strong>. <em><span class="math inline">\(\forall f \in \mathcal{L}(\mathbf{V,W;F})\)</span>, <span class="math inline">\(f\)</span> can be linearly expanded by <span class="math inline">\(\{ {\alpha_{i}^*}\otimes{\beta_{j}^*}\}\)</span></em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math inline">\(\forall \alpha=\sum_{i} a_i\alpha_{i}\in \mathbf{V}\)</span>, <span class="math inline">\(\forall \beta = \sum_{j}b_j\beta_{j}\in \mathbf{W}\)</span> <span class="math display">\[\begin{aligned}
+           f(\alpha,\beta)&amp;=f(\sum_{i}a_i\alpha_{i},\sum_{j}b_j\beta_{j})=\sum_{i,j}a_ib_jf(\alpha_{i},\beta_{j})\\
+           &amp;=\sum_{i,j}\alpha_{i}^*(\alpha)\beta_{j}^*(\beta)f(\alpha_{i},\beta_{j})\\
+           &amp;=\sum_{i,j}f(\alpha_{i},\beta_{j}){\alpha_{i}^*}\otimes{\beta_{j}^*}(\alpha,\beta)
+       \end{aligned}\]</span> Therefore, <span class="math display">\[f=\sum_{i,j}{\alpha_{i}^*}\otimes{\beta_{j}^*}\]</span> ◻</p>
+</div>
+<p>We can conclude that <span class="math display">\[{\mathbf{V}^*}\otimes{\mathbf{W}^*}=\mathcal{L}(\mathbf{V,W;F})\]</span></p>
+<h2 id="construction-the-tensor-product-mathbfv-otimesmathbfw">Construction the tensor product :<span class="math inline">\({\mathbf{V} }\otimes{\mathbf{W} }\)</span></h2>
+<p>Treat the dual space <span class="math inline">\(\mathbf{V}^*\)</span> and <span class="math inline">\(\mathbf{W}^*\)</span> in same procedure: <span class="math display">\[{\mathbf{V}^{**} }\otimes{\mathbf{W}^{**} }=\mathcal{L}(\mathbf{\mathbf{V}^*,\mathbf{W}^*;F})\]</span> Recall that we have introduced the double dual space, we can derive that <span class="math inline">\(\mathbf{\mathbf{V}^{**}=\mathbf{V} }\)</span>, so <span class="math display">\[{\mathbf{V} }\otimes{\mathbf{W} }=\mathcal{L}(\mathbf{V^*,W^*;F})\]</span></p>
+<p>Let's investigate the relation between<span class="math inline">\({\mathbf{V} }\otimes{\mathbf{W} }\)</span> and <span class="math inline">\({\mathbf{V}^*}\otimes{\mathbf{W}^*}\)</span>.</p>
+<div class="prop">
+<p><strong>Proposition 5</strong>. <em><span class="math inline">\({\mathbf{V} }\otimes{\mathbf{W} }\)</span> and <span class="math inline">\({\mathbf{V}^*}\otimes{\mathbf{W}^*}\)</span> are dual spaces of each other, i.e. <span class="math display">\[({\mathbf{V} }\otimes{\mathbf{W} })^*={\mathbf{V}^*}\otimes{\mathbf{W}^*}\]</span> ,by defining <span class="math inline">\({v_1^*}\otimes{w_1^*}({v}\otimes{w})=v_1^*(v)w_1^*(w)\)</span>, where <span class="math inline">\(v\in \mathbf{V}, w\in \mathbf{W}, v_1^*\in \mathbf{V}^*,w_1^*\in \mathbf{W}^*\)</span></em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> First of all, by definition in the proposition, assume that <span class="math inline">\(\{\alpha_{i}\}, \{\beta_{j}\}\)</span> are bases of <span class="math inline">\(\mathbf{V},\mathbf{W}\)</span> and <span class="math inline">\(\{\alpha_{i}^*\},\{\beta_{j}^*\}\)</span> are bases of <span class="math inline">\(\mathbf{V},\mathbf{W}\)</span>, and we get <span class="math display">\[{\alpha_{i}^*}\otimes{\beta_{j}^*}({\alpha_p}\otimes{\beta_q})=\alpha_{i}^*(\alpha_p)\beta_{j}^*(\beta_q)=\delta_{i,p}\delta_{j,p}\]</span> We can assert that <span class="math inline">\(\{ {\alpha_{i} }\otimes{\beta_{j} }\}\)</span> and <span class="math inline">\({\alpha_{i}^*}\otimes{\beta_{j}^*}\)</span> are dual bases.</p>
+<p>Check <span class="math inline">\(\forall f\in ({\mathbf{V} }\otimes{\mathbf{W} })^*\)</span>, note that <span class="math inline">\({\mathbf{V} }\otimes{\mathbf{W} }\)</span> should be considered as a vector space with basis <span class="math inline">\(\{ {\alpha_{i} }\otimes{\beta_{j} }\}\)</span>; <span class="math inline">\(\forall {\alpha}\otimes{\beta}\in {\mathbf{V} }\otimes{\mathbf{W} }\)</span> <span class="math display">\[\begin{aligned}
+            f({\alpha}\otimes{\beta})&amp;=f(\sum_{i}a_i\alpha_{i}\otimes\sum_{j}b_j\beta_{j})\\
+            &amp;=\sum_{i,j}a_ib_jf({\alpha_{i} }\otimes{\beta_{j} })=\sum_{i,j}\alpha_{i}^*(\alpha)\beta_{j}^*(\beta)f({\alpha_{i} }\otimes{\beta_{j} })\\
+            &amp;=\sum_{i,j}f({\alpha_{i} }\otimes{\beta_{j} }){\alpha_{i}^*}\otimes{\beta_{j}^*}({\alpha}\otimes{\beta})
+       \end{aligned}\]</span> So <span class="math inline">\(f\)</span> can be linearly expanded by <span class="math inline">\(\{ {\alpha_{i}^*}\otimes{\beta_{j}^*}\}\)</span>, which means <span class="math display">\[({\mathbf{V} }\otimes{\mathbf{W} })^*\subseteq {\mathbf{V}^*}\otimes{\mathbf{W}^*}\]</span> Similarly, consider the double dual space and apply the same procedure above, we can prove: <span class="math display">\[\begin{aligned}
+          &amp;({\mathbf{V}^*}\otimes{\mathbf{W}^*})^*\subseteq{\mathbf{V}^{**} }\otimes{\mathbf{W}^{**} }\\
+          &amp;({\mathbf{V}^*}\otimes{\mathbf{W}^*})^{**}\subseteq{\mathbf{V}^{**} }\otimes{\mathbf{W}^{**} })^*\\
+          &amp;{\mathbf{V}^*}\otimes{\mathbf{W}^*}\subseteq({\mathbf{V} }\otimes{\mathbf{W} })^*
+      \end{aligned}\]</span> Therefore,<span class="math display">\[{\mathbf{V}^*}\otimes{\mathbf{W}^*}=({\mathbf{V} }\otimes{\mathbf{W} })^*\]</span> ◻</p>
+</div>
+<p>Let's continue to a big theorem. It is quite easy to prove, but it indicates essential parts of tensor product.</p>
+<div class="thm">
+<p><strong>Theorem 1</strong>. <em>Define: <span class="math inline">\(h:\mathbf{V}\times \mathbf{W}\to {\mathbf{V} }\otimes{\mathbf{W} }\)</span> is a bilinear map, obtained from tensor product. <span class="math inline">\(v\in \mathbf{V}, w\in \mathbf{W}\)</span>, then <span class="math display">\[h(v,w)=v\otimes w\]</span> And, for any bilinear function <span class="math inline">\(f:\mathbf{V}\times \mathbf{W}\to \mathbf{F}\)</span>, there exists only linear function <span class="math inline">\(g:{\mathbf{V} }\otimes{\mathbf{W} }\to \mathbf{F}\)</span> such that <span class="math display">\[f=g\circ h\]</span></em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> First step, we need to find <span class="math inline">\(g\)</span>. Naturally, we can define <span class="math inline">\(g:{\mathbf{V} }\otimes{\mathbf{W} }\to \mathbb{F}\)</span> by <span class="math display">\[g({\alpha_{i} }\otimes{\beta_{j} })=f(\alpha_{i},\beta_{j})\]</span> Since, <span class="math inline">\(\{ {\alpha_{i} }\otimes{\beta_{j} }\}\)</span> is the basis of <span class="math inline">\({\mathbf{V} }\otimes{\mathbf{W} }\)</span>, <span class="math inline">\(g\)</span> is uniquely defined.</p>
+<p>Next step, we need to check <span class="math inline">\(f=g\circ h\)</span>, for arbitrary <span class="math inline">\(\alpha=\sum_{i}a_i\alpha_{i}\in\mathbf{V},\beta=\sum_{j}b_j\beta_{j}\in\mathbf{W}\)</span>, <span class="math display">\[\begin{aligned}
+           g\circ h(\alpha,\beta)=g({\alpha}\otimes{\beta})&amp;=g(\sum_{i}a_i\alpha_{i}\otimes\sum_{j}b_j\beta_{j})\\
+           &amp;=\sum_{i,j}a_ib_jg({\alpha_{i} }\otimes{\beta_{j} })=\sum_{i,j}a_ib_jf(\alpha_{i},\beta_{j})\\
+           &amp;=f(\sum_{i}a_i\alpha_{i},\sum_{j}b_j\beta_{j})=f(\alpha,\beta)
+       \end{aligned}\]</span> ◻</p>
+</div>
+<p>By tensor product, we can construct a bigger linear space <span class="math inline">\({\mathbf{V} }\otimes{\mathbf{W} }\)</span> from <span class="math inline">\(\mathbf{V}\)</span> and <span class="math inline">\(\mathbf{W}\)</span>. Also, the bilinear function <span class="math inline">\(f(\alpha,\beta)\)</span> and linear function <span class="math inline">\(g({\alpha}\otimes{\beta})\)</span> are connected by tensor product <span class="math inline">\(\otimes\)</span></p>
+<h1 id="multi-linear-function">Multi-linear function</h1>
+<p>In the previous section, we have shown that a tensor product of two linear function is a bilinear function. Similarly we can define the tensor product of multi-linear functions. For example, <span class="math inline">\(f\in \mathcal{L}(\mathbf{\mathbf{V}_1,\cdots,\mathbf{V}_s;F})\)</span> is a s-linear function, and <span class="math inline">\(g\in \mathcal{L}(\mathbf{\mathbf{W}_1,\cdots,\mathbf{W}_r;F})\)</span> is a r-linear function, then we can define a r+s-linear function <span class="math inline">\({f}\otimes{g}\)</span> by <span class="math display">\[{f}\otimes{g}(v_1,v_2,\cdots,v_s,w_1,\cdots,w_r)=f(v_1,\cdots,v_s)g(w_1,\cdots,w_r)\]</span> We can verify <span class="math inline">\({f}\otimes{g}\)</span> is indeed a r+s-linear function just by repeating the process in previous section, but this is quite boring, and nobody wants to spend time reading that. Hence, I will skip this, and focus on something more interesting.</p>
+<div class="thm">
+<p><strong>Theorem 2</strong>. <em>Tensor product is association. <span class="math inline">\(f\in\mathcal{L}(\mathbf{V_1,\cdots,V_s;F})\)</span>, <span class="math inline">\(g\in \mathcal{L}(\mathbf{W_1,\cdots,W_r;F})\)</span> and<br />
+<span class="math inline">\(h\in \mathcal{L}(\mathbf{Z_1,\cdots,Z_t;F})\)</span>, then <span class="math display">\[(f\otimes g)\otimes h=f\otimes (g\otimes h)\]</span></em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Note that <span class="math inline">\(v=(v_1,\cdots,v_s)\)</span>, <span class="math inline">\(w=(w_1,\cdots,w_r)\)</span> and <span class="math inline">\(z=(z_1,\cdots,z_t)\)</span> <span class="math display">\[\begin{aligned}
+           ({f}\otimes{g})\otimes h(v,w,z)&amp;=({f}\otimes{g})(v,w)h(z)\\
+           &amp;=(f(v)g(w))h(z)\\
+           &amp;=f(v)(g(w)h(z))\\
+           &amp;=f(v)({g}\otimes{h})(v,z)\\
+           &amp;=f\otimes({g}\otimes{h})(v,w,z)
+       \end{aligned}\]</span> ◻</p>
+</div>
+<p>Therefore, <span class="math inline">\(\mathbf{V_1,V_2,\cdots,V_s}\)</span> are vector spaces, and we can define their tensor product and construct a bigger vector space <span class="math display">\[\mathbf{V_1\otimes V_2\cdots \otimes V_s}\]</span> with basis <span class="math inline">\(\{\alpha_{j_1}^{(1)}\otimes \alpha_{j_2}^{(2)}\otimes \cdots \otimes \alpha_{j_s}^{(s)}\}\)</span>, where <span class="math inline">\(\{\alpha_{j_t}^{(t)}\}\)</span> is the basis of <span class="math inline">\(\mathbf{V}_t\)</span></p>
+<h1 id="tensors">Tensors</h1>
+<p>Finally, we are approaching to our ultimate goal, tensors. In this section, tensors are naturally defined when changing the basis of vector space and their tensor product. To make problems simple, and make this interesting, we only study the tensor product of <span class="math inline">\(\mathbf{V}\)</span> and its dual space <span class="math inline">\(\mathbf{V}^*\)</span></p>
+<p>Suppose that <span class="math inline">\(\mathbf{V}\)</span> is a n-dimensional vector space and <span class="math inline">\(\mathbf{V}^*\)</span> is its dual space.</p>
+<div class="Def">
+<p><strong>Definition 4</strong>. <em>(r,s)-type tensors: <span class="math display">\[\mathbf{V}_s^r=\otimes_{i=1}^{r}\mathbf{V}\otimes_{j=1}^{s}\mathbf{V}^*=\overbrace{\mathbf{V}\otimes\cdots\otimes\mathbf{V} }^{\text{r terms} }\otimes\overbrace{\mathbf{V}^*\otimes\cdots\otimes\mathbf{V}^*}^{\text{s terms} }\]</span> where r is contravariant order and s is covariant order.</em></p>
+</div>
+<p>Here are some examples:<span class="math inline">\(\mathbf{V}_0^0=\mathbf{F}\)</span>, <span class="math inline">\(\mathbf{V}_0^1=\mathbf{V}\)</span> and <span class="math inline">\(\mathbf{V}_1^0=\mathbf{V}^*\)</span></p>
+<p>Let's recall that <span class="math inline">\(\mathbf{V}\otimes\mathbf{W}=\mathcal{L}(\mathbf{V}^*,\mathbf{W}^*;F)\)</span></p>
+<p>The elements in <span class="math inline">\(V_s^r\)</span> can be viewed as a (r+s)-linear function defined on <span class="math display">\[\overbrace{\mathbf{V}^*\times\cdots\mathbf{V}^*}^{r}\times \overbrace{\mathbf{V}\times\cdots\times\mathbf{V} }^{s}\]</span> In other words, <span class="math display">\[\mathbf{V}_s^r=\mathcal{L}( \overbrace{\mathbf{V}^*\times\cdots\mathbf{V}^*}^{r}\times \overbrace{\mathbf{V}\times\cdots\times\mathbf{V} }^{s};\mathbf{F})\]</span> <span class="math inline">\(\mathbf{V}_s^r\)</span> has a basis <span class="math inline">\(e_{i_1}\otimes e_{i_2}\cdots \otimes e_{i_r}\otimes e^{*k_1}\otimes\cdots \otimes e^{*k_s}\)</span>, where <span class="math inline">\(1\leqslant i_1,\cdots,i_r,k_1,\cdots,k_s\leqslant n\)</span></p>
+<p>Recall the first big theorem, we can view the tensor product as a linear function on its dual space. For example, <span class="math inline">\({v}\otimes{w}\)</span> is a linear function on <span class="math inline">\({\mathbf{V}^*}\otimes{\mathbf{W}^*}\)</span>.</p>
+<p>So the element in <span class="math inline">\(\mathbf{V}_s^r\)</span> can be viewed as a linear function on vector space <span class="math display">\[\overbrace{\mathbf{V}^*\otimes\cdots\otimes\mathbf{V}^*}^{r}\otimes\overbrace{\mathbf{V}\otimes\cdots\otimes\mathbf{V} }^{s}\]</span> Let's have a closer view <span class="math display">\[e_{i_1}\otimes e_{i_2}\cdots \otimes e_{i_r}\otimes e^{*k_1}\otimes\cdots \otimes e^{*k_s}
+        (e^{*j_1}\otimes\cdots\otimes e^{*j_r}\otimes e_{m_1\otimes\cdots\otimes e_{m_s} })=\delta_{i_1,j_1}\cdots\delta_{i_r,j_r}\delta_{k_1,m_1}\cdots\delta_{k_s,m_s}\]</span></p>
+<p><span class="math inline">\(\forall x \in \mathbf{V}_s^r\)</span> <span class="math display">\[\begin{aligned}
+       &amp;x=\sum_{i_1,\cdots,i_r,k_1,\cdots k_s}x_{k_1,\cdots,k_s}^{i_1,\cdots,i_r}e_{i_1}\otimes\cdots\otimes e_{i_r}\otimes e^{*k_1}\otimes\cdots\otimes e^{*k_s}\\
+       &amp;\text{where }x_{k_1,\cdots,k_s}^{i_1,\cdots,i_r}=x(e^{*i_1}\otimes\cdots\otimes e^{*i_r}\otimes e_{k_1}\otimes\cdots\otimes e_{k_s})
+   \end{aligned}\]</span></p>
+<h2 class="unnumbered" id="change-of-basis-and-the-definition-of-tensors">Change of basis and the definition of tensors</h2>
+<p>First of all, consider the change of basis <span class="math display">\[\begin{aligned}
+       \bar{e_i}=\sum_{l}a_i^l e_l\\
+       \bar{e}^{*j}=\sum_{k}b_k^j e^{*k}
+   \end{aligned}\]</span></p>
+<div class="prop">
+<p><strong>Proposition 6</strong>. <em>We have the relation : <span class="math display">\[\delta_{ij}=\sum_{l}b_l^j a_i^l\]</span></em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math display">\[\begin{aligned}
+           \delta_{ij}=\bar{e}^{*j}(\bar{e_i})&amp;=\sum_{k}b_k^je^{*k}(\sum_{l}a_i^l e_l)\\
+           &amp;=\sum_{k,l}b_k^j a_i^l e^{*k}(e_i)\\
+           &amp;=\sum_{k,l}b_k^j a_i^l \delta_{k,l}\\
+           &amp;=\sum_{l}b_l^j a_i^l
+       \end{aligned}\]</span> ◻</p>
+</div>
+<p>Expand <span class="math inline">\(x\in \mathbf{V}_s^r\)</span> on bases <span class="math inline">\(\{\bar{e}_{i_1}\otimes\cdots\otimes\bar{e}_{i_r}\otimes\bar{e}^{*k_1}\otimes\cdots\otimes\bar{e}^{*k_s}\}\)</span>and <span class="math inline">\(\{e_{j_i}\otimes\cdots\otimes e_{j_r}\otimes e^{*l_1}\otimes\cdots\otimes e^{l_s}\}\)</span> respectively.</p>
+<p><span class="math display">\[\begin{aligned}
+       x&amp;=\sum_{ {}^{i_1,\cdots i_r}_{k_1\cdots k_s} } \bar{x}_{k_1,\cdots,k_s}^{i_1,\cdots,i_r}\bar{e}_{i_1}\otimes\cdots\otimes\bar{e}_{i_r}\otimes\bar{e}^{*k_1}\otimes\cdots\otimes\bar{e}^{*k_s}\\
+       &amp;=\sum_{ {}^{j_1\cdots j_r}_{l_1\cdots l_s} } \sum_{ {}^{i_1,\cdots i_r}_{k_1\cdots k_s} } \bar{x}_{k_1,\cdots,k_s}^{i_1,\cdots,i_r} a_{i_1}^{j_1}\cdots a_{i_r}^{j_r}b_{l_1}^{k_1}\cdots b_{l_s}^{k_s}e_{j_i}\otimes\cdots\otimes e_{j_r}\otimes e^{*l_1}\otimes\cdots\otimes e^{l_s}\\
+       &amp;=\sum_{ {}^{j_1\cdots j_r}_{l_1\cdots l_s} =1}^n x_{k_1\cdots k_s}^{j_1\cdots j_r} e_{j_i}\otimes\cdots\otimes e_{j_r}\otimes e^{*l_1}\otimes\cdots\otimes e^{l_s}
+   \end{aligned}\]</span></p>
+<p>So we can get <span class="math display">\[x_{k_1\cdots k_s}^{j_1\cdots j_r}=\sum_{ {}^{i_1,\cdots i_r}_{k_1\cdots k_s} } \bar{x}_{k_1,\cdots,k_s}^{i_1,\cdots,i_r} a_{i_1}^{j_1}\cdots a_{i_r}^{j_r}b_{l_1}^{k_1}\cdots b_{l_s}^{k_s}\]</span> and this is the classical definition of tensors.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/math/" rel="tag"># math</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/10/07/Dual-space-and-inner-product/" rel="prev" title="Dual space and inner product">
+      <i class="fa fa-chevron-left"></i> Dual space and inner product
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2020/10/19/self-adjoint-opeartor/" rel="next" title="self-adjoint opeartor">
+      self-adjoint opeartor <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#preparation-dual-space"><span class="nav-number">2.</span> <span class="nav-text">Preparation: Dual space</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bilinear-function-and-tensor-product"><span class="nav-number">3.</span> <span class="nav-text">Bilinear function and tensor product</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">3.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#construction-of-tensor-product"><span class="nav-number">3.2.</span> <span class="nav-text">Construction of tensor product</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#construction-the-tensor-product-mathbfv-otimesmathbfw"><span class="nav-number">3.3.</span> <span class="nav-text">Construction the tensor product :\({\mathbf{V} }\otimes{\mathbf{W} }\)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multi-linear-function"><span class="nav-number">4.</span> <span class="nav-text">Multi-linear function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensors"><span class="nav-number">5.</span> <span class="nav-text">Tensors</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#change-of-basis-and-the-definition-of-tensors"><span class="nav-number">5.1.</span> <span class="nav-text">Change of basis and the definition of tensors</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yuhan Wu"
+      src="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+  <p class="site-author-name" itemprop="name">Yuhan Wu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuhan Wu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/blog/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
