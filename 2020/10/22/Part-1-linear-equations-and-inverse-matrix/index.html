@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yuhanwu314.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction The linear system equations can be written into a matrix form. By linearity, the solutions satisfy the superposition principle. Therefore, to solve the equation \(\mathbf{A}x&#x3D;b\),where \">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Part_1 linear equations and inverse matrix">
+<meta property="og:url" content="https://yuhanwu314.github.io/blog/2020/10/22/Part-1-linear-equations-and-inverse-matrix/index.html">
+<meta property="og:site_name" content="Yuhan Wu&#39;s personal website">
+<meta property="og:description" content="Introduction The linear system equations can be written into a matrix form. By linearity, the solutions satisfy the superposition principle. Therefore, to solve the equation \(\mathbf{A}x&#x3D;b\),where \">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-22T09:05:38.000Z">
+<meta property="article:modified_time" content="2020-10-22T09:10:43.255Z">
+<meta property="article:author" content="Yuhan Wu">
+<meta property="article:tag" content="math">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yuhanwu314.github.io/blog/2020/10/22/Part-1-linear-equations-and-inverse-matrix/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Part_1 linear equations and inverse matrix | Yuhan Wu's personal website</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yuhan Wu's personal website</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yuhanwu314.github.io/blog/2020/10/22/Part-1-linear-equations-and-inverse-matrix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+      <meta itemprop="name" content="Yuhan Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuhan Wu's personal website">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Part_1 linear equations and inverse matrix
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-22 17:05:38 / Modified: 17:10:43" itemprop="dateCreated datePublished" datetime="2020-10-22T17:05:38+08:00">2020-10-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/lecture-notes/" itemprop="url" rel="index"><span itemprop="name">lecture notes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="introduction">Introduction</h1>
+<p>The linear system equations can be written into a matrix form. By linearity, the solutions satisfy the superposition principle. Therefore, to solve the equation <span class="math inline">\(\mathbf{A}x=b\)</span>,where <span class="math inline">\(\mathbf{A}\)</span> is a n-order matrix, we can solve the equation <span class="math inline">\(\mathbf{A}x=\epsilon_i\)</span>,(where <span class="math inline">\(\epsilon_i\)</span> are base vectors), then apply the superposition principle to obtain the final solution. In this process, we can find the inverse of the matrix <span class="math inline">\(\mathbf{A}\)</span>, if <span class="math inline">\(\det \mathbf{A}\neq 0\)</span>. Finally, we can derive the Crammer's rule and show that the equation <span class="math inline">\(\mathbf{A}x=b\)</span> has a unique solution iff <span class="math inline">\(\det \mathbf{A}\neq 0\)</span>.</p>
+<a id="more"></a>
+<h1 id="superposition-principle-of-the-solutions">Superposition principle of the solutions</h1>
+<p>Observe the equation, <span class="math inline">\(\mathbf{A}x=b\)</span> <span class="math display">\[\left\{ 
+    \begin{array}{c}
+    a_{11}x_1+a_{12}x_2+\dots +a_{1n}x_n=b_1\\
+    a_{21}x_1+a_{22}x_2+\dots +a_{2n}x_n=b_2\\
+    \vdots \\
+    a_{n1}x_1+a_{n2}x_2+\dots +a_{nn}x_n=b_n\\
+    \end{array}
+    \right.\]</span></p>
+<p>Write it in matrix form: <span class="math display">\[\begin{pmatrix}
+    a_{11} &amp; a_{12} &amp;\dots &amp;a_{1n} \\
+   a_{21} &amp; a_{22} &amp;\dots &amp; a_{2n} \\
+   \vdots &amp; \vdots  &amp; \ddots &amp; \vdots \\
+   a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
+   \end{pmatrix} 
+   \begin{pmatrix}
+       x_1\\ x_2\\ \vdots\\ x_n
+   \end{pmatrix}=
+   \begin{pmatrix}
+       b_{1}\\ b_{2}\\ \vdots \\b_{n}
+\end{pmatrix}\]</span></p>
+<h2 class="unnumbered" id="superposition-principle">Superposition principle</h2>
+<p>By the linearity of matrix <span class="math inline">\(\mathbf{A}\)</span>, we can easily prove the following:</p>
+<p>If <span class="math inline">\(\mathbf{A}x_1=b_1\)</span> and <span class="math inline">\(\mathbf{A}x_2=b_2\)</span>, then <span class="math display">\[\begin{aligned}
+    &amp;\mathbf{A}(x_1+x_2)=\mathbf{A}x_1+\mathbf{A}x_2=b_1+b_2\\
+    &amp;\mathbf{A}(kx_1)=k\mathbf{A}x_1=kb_1\end{aligned}\]</span> Then for any <span class="math inline">\(b=\sum b_i\epsilon_i\in \mathbb{R}^n\)</span>, where <span class="math inline">\(\{\epsilon_i\}\)</span> is the basis of <span class="math inline">\(\mathbb{R}^n\)</span>, fixed <span class="math inline">\(\mathbf{A}\)</span>, we only need to firstly solve the equation <span class="math inline">\(\mathbf{A}x=\epsilon_i\)</span> respectively and get the solution <span class="math inline">\(x_i\)</span>. Then apply the superposition principle and get the solution. For example, <span class="math inline">\(\mathbf{A}x=\epsilon_1\)</span> <span class="math display">\[\begin{pmatrix}
+        a_{11} &amp; a_{12} &amp;\dots &amp;a_{1n} \\
+       a_{21} &amp; a_{22} &amp;\dots &amp; a_{2n} \\
+       \vdots &amp; \vdots  &amp; \ddots &amp; \vdots \\
+       a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
+       \end{pmatrix} 
+       \begin{pmatrix}
+           x_1\\ x_2\\ \vdots\\ x_n
+       \end{pmatrix}=
+       \begin{pmatrix}
+           1\\0\\ \vdots \\0
+    \end{pmatrix}\]</span></p>
+<p>Solve this equation and we can get a solution <span class="math display">\[x_1=\begin{pmatrix}
+        x_{11}\\x_{21}\\ \vdots\\x_{n1}
+    \end{pmatrix}\]</span> Similarly, apply the same procedure to <span class="math inline">\(\epsilon_2,\epsilon_3\cdots,\epsilon_n\)</span>, we can yield <span class="math display">\[x_2=\begin{pmatrix}
+        x_{12}\\ x_{22}\\ \vdots \\ x_{n2}
+    \end{pmatrix}\quad
+    x_3=\begin{pmatrix}
+        x_{13}\\ x_{23}\\ \vdots \\ x_{n3}
+    \end{pmatrix}\cdots
+    x_n=\begin{pmatrix}
+        x_{1n}\\ x_{2n}\\ \vdots \\ x_{nn}
+    \end{pmatrix}\]</span> As we know <span class="math inline">\(b=\sum b_i\epsilon_i\)</span>, we can obtain the solution <span class="math inline">\(x=\sum b_ix_i\)</span>. This can be easily verified by the linearity of <span class="math inline">\(\mathbf{A}\)</span>: <span class="math display">\[\mathbf{A}(x)=\mathbf{A}(\sum b_ix_i)=\sum b_i\mathbf{A}(x_i)=\sum b_i \epsilon_i=b\]</span></p>
+<p>Comment: if <span class="math inline">\(\mathbf{A}\)</span> remain unchanged and change <span class="math inline">\(b\)</span> into <span class="math inline">\(b&#39;=\sum b&#39;_i\epsilon_i\)</span>, we can get the solution immediately by <span class="math inline">\(x&#39;=\sum b&#39;_ix_i\)</span>. The good thing is that we don't have to solve the equation again. This is extremely useful in numerical computation.</p>
+<h1 id="inverse-matrix-of-mathbfa">Inverse matrix of <span class="math inline">\(\mathbf{A}\)</span></h1>
+<p>From the previous section, we have derived that <span class="math inline">\(\mathbf{A}x_1 =\epsilon_1\)</span>, <span class="math inline">\(\mathbf{A}x_2=\epsilon_2\cdots\mathbf{A}x_n =\epsilon_n\)</span>.</p>
+<p>We combine the column vectors <span class="math inline">\(x_1,x_2\cdots x_n\)</span> into a matrix: <span class="math display">\[(x_1,x_2,\cdots x_n)=
+    \begin{pmatrix}
+        x_{11} &amp;x_{12}&amp;\cdots&amp;x_{1n}\\
+        x_{21} &amp;x_{22}&amp;\cdots&amp;x_{2n}\\
+        \vdots &amp;\vdots&amp;     &amp;\vdots\\
+        x_{n1} &amp;x_{n_2}&amp;\cdots&amp;x_{nn}
+    \end{pmatrix}\quad \text{note as} \mathbf{X}\]</span></p>
+<p>Here we can easily verify that <span class="math inline">\(\mathbf{X}\)</span> is the inverse matrix of<span class="math inline">\(\mathbf{A}\)</span>. <span class="math display">\[\begin{aligned}
+     \mathbf{A}\mathbf{X}&amp;=\mathbf{A}(x_1,x_2,\cdots,x_n)\\
+     &amp;=(\mathbf{A}x_1,\mathbf{A}x_2,\cdots,\mathbf{A}x_n)\\
+     &amp;=(\epsilon_1,\epsilon_2,\cdots,\epsilon_n)\\
+     &amp;=\mathbf{I}
+ \end{aligned}\]</span></p>
+<p>However, we have missed a big problem. We didn't prove the existence of solution <span class="math inline">\(x_i\)</span>. Now our next job is to investigate it. Before that we need some preparation.</p>
+<h2 id="determinant">Determinant</h2>
+<p>Firstly, the determinant of matrix <span class="math inline">\(\mathbf{A}\)</span> can be expanded by row or column elements for example <span class="math display">\[\det \mathbf{A}=\sum a_{1i}A_{1i}\]</span> and <span class="math inline">\(A_{ij}\)</span> is called the cofactor of <span class="math inline">\(a_{ij}\)</span>, which refers to the determinant of the matrix that <span class="math inline">\(\mathbf{A}\)</span>'s ith row elements and jth column elements are eliminated.</p>
+<p>Another important property of determinant is that if any two of the column vectors or row vectors are same, then the determinant is zero.</p>
+<h2 id="formula-of-solution-and-inverse-matrix">Formula of solution and inverse matrix</h2>
+<p>If readers have a good foundation in mathematical derivation, you can use Gauss elimination method and apply the property of determinant to obtain the result below. But now, We assert that <span class="math display">\[x_1=\frac{1}{\det \mathbf{A} }\begin{pmatrix}
+        A_{11}\\ A_{12}\\ \vdots \\ A_1n
+    \end{pmatrix}\]</span> is the solution of <span class="math inline">\(Ax=\epsilon_1\)</span>, where <span class="math inline">\(A_{ij}\)</span> is the cofactor of <span class="math inline">\(a_{ij}\)</span>. Let's check it. <span class="math display">\[\mathbf{A}X_1=\begin{pmatrix}
+        a_{11}&amp;\cdots&amp;a_{1n}\\
+        \vdots&amp;      &amp;\vdots\\
+        a_{n1}&amp;\cdots&amp;a_{nn}
+    \end{pmatrix}\cdot \frac{1}{\det \mathbf{A} }
+    \begin{pmatrix}
+        A_{11}\\ \vdots \\ A_{1n}
+    \end{pmatrix}=\frac{1}{\det \mathbf{A} }
+    \begin{pmatrix}
+        \sum a_{1i}A_{1i}\\ \vdots \\ \sum a_{ni}A_{1i}
+    \end{pmatrix}\]</span></p>
+<p>Notice that: <span class="math display">\[\sum_i a_{1i}A_{1i}=\det \begin{pmatrix}
+        a_{11}&amp;\cdots&amp;a_{1n}\\
+        \vdots&amp;      &amp;\vdots\\
+        a_{n1}&amp;\cdots&amp;a_{nn}
+    \end{pmatrix}=\det \mathbf{A}\]</span></p>
+<p>and <span class="math display">\[\sum_i a_{ki}A_{1i}=\det \begin{pmatrix}
+        a_{k1}&amp; a_{k2}&amp;\cdots &amp;a_{kn}\\
+        a_{21}&amp; a_{22}&amp;\cdots &amp;a_{2n}\\
+        \vdots&amp;       &amp;       &amp;\vdots\\
+        a_{k1}&amp; a_{k2}&amp;\cdots &amp;a_{kn}\\
+        \vdots&amp;       &amp;       &amp;\vdots\\
+        a_{n1}&amp; a_{n2}&amp;\cdots &amp;a_{nn}
+    \end{pmatrix}=0\]</span> because the 1th and kth row elements are same.</p>
+<p>Therefore <span class="math display">\[\mathbf{A}x_1=\frac{1}{\det A}\begin{pmatrix}
+        \det \mathbf{A}\\ 0\\ \vdots \\ 0
+    \end{pmatrix}=\epsilon_1\]</span> We can check <span class="math inline">\(\mathbf{A}x_2,\mathbf{A}x_3,\cdots,\mathbf{A}x_n\)</span> in the same way. By this, we proved that <span class="math display">\[\begin{pmatrix}
+        a_{11}&amp;\cdots&amp;a_{1n}\\
+        \vdots&amp;      &amp;\vdots\\
+        a_{n1}&amp;\cdots&amp;a_{nn}
+    \end{pmatrix}^{-1}=(x_1,x_2,\cdots,x_n)=
+    \frac{1}{\det \mathbf{A} }=\begin{pmatrix}
+        A_{11}&amp;\cdots&amp;A_{n1}\\
+        \vdots&amp;      &amp;\vdots\\
+        A_{1n}&amp;\cdots&amp;A_{nn}\\ 
+    \end{pmatrix}\]</span> So far, we have derived the formula of inverse matrix if <span class="math inline">\(\mathbf{A}\)</span> is invertible, i.e. <span class="math inline">\(\det \mathbf{A}\neq 0\)</span>. In my opinion, if you are required to find the inverse matrix of a known matrix, I recommend you to calculate it by solving the linear function instead of using the inverse matrix formula. There are two reasons. Firstly, they are actually in the same complexity. Second, you can easily check your results step by step. It is very likely to make mistakes when you are using formula to calculate, and you will find it difficult to debug it.</p>
+<h1 id="crammer-rule">Crammer rule</h1>
+<p>With the inverse matrix formula, it is an easy job to prove the Crammer rule. Equation <span class="math inline">\(\mathbf{A}x =b\)</span>, <span class="math display">\[x=\mathbf{A}^{-1} b=\frac{1}{\det \mathbf{A} }\begin{pmatrix}
+        A_{11}&amp;\cdots&amp;A_{n1}\\
+        \vdots&amp;      &amp;\vdots\\
+        A_{1n}&amp;\cdots&amp;A_{nn}
+    \end{pmatrix}
+    \begin{pmatrix}
+        b_1\\ \vdots \\b_n
+    \end{pmatrix}=\frac{1}{\det \mathbf{A} }\begin{pmatrix}
+        \sum_i A_{1i}b_i\\ \vdots \\ \sum_i A_{ni}b_i 
+    \end{pmatrix}\]</span></p>
+<p>Observe that <span class="math display">\[\sum_i A_{1i}b_i=\det\begin{pmatrix}
+        b_1&amp; a_{12}&amp;\cdots&amp;a_{1n}\\
+        b_2&amp; a_{22}&amp;\cdots&amp;a_{2n}\\
+        \vdots&amp;\vdots&amp;    &amp;\vdots\\
+        b_n&amp; a_{n2}&amp;\cdots&amp;a_{nn}
+    \end{pmatrix}\]</span> and <span class="math display">\[\sum_i A_{ki}b_i=\det\begin{pmatrix}
+        a_{11}&amp;\cdots&amp;a_{1,k-1}&amp;b_1&amp;a_{1,k+1}&amp;\cdots&amp;a_{1n}\\
+        a_{21}&amp;\cdots&amp;a_{2,k-1}&amp;b_2&amp;a_{2,k+1}&amp;\cdots&amp;a_{2n}\\
+        \vdots&amp;      &amp;         &amp;\vdots&amp;      &amp;      &amp;\vdots\\
+        a_{n1}&amp;\cdots&amp;a_{n,k-1}&amp;b_n&amp;a_{n,k+1}&amp;\cdots&amp;a_{nn}\\
+    \end{pmatrix}\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/math/" rel="tag"># math</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/10/19/self-adjoint-opeartor/" rel="prev" title="self-adjoint opeartor">
+      <i class="fa fa-chevron-left"></i> self-adjoint opeartor
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2020/10/22/Part-2-linear-equations-and-eigenvalue-problems/" rel="next" title="Part-2 linear equations and eigenvalue problems">
+      Part-2 linear equations and eigenvalue problems <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#superposition-principle-of-the-solutions"><span class="nav-number">2.</span> <span class="nav-text">Superposition principle of the solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#superposition-principle"><span class="nav-number">2.1.</span> <span class="nav-text">Superposition principle</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inverse-matrix-of-mathbfa"><span class="nav-number">3.</span> <span class="nav-text">Inverse matrix of \(\mathbf{A}\)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#determinant"><span class="nav-number">3.1.</span> <span class="nav-text">Determinant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#formula-of-solution-and-inverse-matrix"><span class="nav-number">3.2.</span> <span class="nav-text">Formula of solution and inverse matrix</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crammer-rule"><span class="nav-number">4.</span> <span class="nav-text">Crammer rule</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yuhan Wu"
+      src="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+  <p class="site-author-name" itemprop="name">Yuhan Wu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuhan Wu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/blog/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

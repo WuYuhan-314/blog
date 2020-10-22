@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yuhanwu314.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction The eigenvalue problem \[\mathbf{A}x&#x3D;\lambda x\] where \(\mathbf{A}\) is a linear transformation on \(\mathbb{R}^n\), is equivalent to the problem: \[(\mathbf{A}-\lambda I)x&#x3D;0\] By Cramm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Part-2 linear equations and eigenvalue problems">
+<meta property="og:url" content="https://yuhanwu314.github.io/blog/2020/10/22/Part-2-linear-equations-and-eigenvalue-problems/index.html">
+<meta property="og:site_name" content="Yuhan Wu&#39;s personal website">
+<meta property="og:description" content="Introduction The eigenvalue problem \[\mathbf{A}x&#x3D;\lambda x\] where \(\mathbf{A}\) is a linear transformation on \(\mathbb{R}^n\), is equivalent to the problem: \[(\mathbf{A}-\lambda I)x&#x3D;0\] By Cramm">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-22T09:08:35.000Z">
+<meta property="article:modified_time" content="2020-10-22T09:11:27.976Z">
+<meta property="article:author" content="Yuhan Wu">
+<meta property="article:tag" content="math">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yuhanwu314.github.io/blog/2020/10/22/Part-2-linear-equations-and-eigenvalue-problems/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Part-2 linear equations and eigenvalue problems | Yuhan Wu's personal website</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yuhan Wu's personal website</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yuhanwu314.github.io/blog/2020/10/22/Part-2-linear-equations-and-eigenvalue-problems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+      <meta itemprop="name" content="Yuhan Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuhan Wu's personal website">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Part-2 linear equations and eigenvalue problems
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-22 17:08:35 / Modified: 17:11:27" itemprop="dateCreated datePublished" datetime="2020-10-22T17:08:35+08:00">2020-10-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/lecture-notes/" itemprop="url" rel="index"><span itemprop="name">lecture notes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="introduction">Introduction</h1>
+<p>The eigenvalue problem <span class="math display">\[\mathbf{A}x=\lambda x\]</span> where <span class="math inline">\(\mathbf{A}\)</span> is a linear transformation on <span class="math inline">\(\mathbb{R}^n\)</span>, is equivalent to the problem: <span class="math display">\[(\mathbf{A}-\lambda I)x=0\]</span> By Crammer rule, if <span class="math inline">\(\det (\mathbf{A}-\lambda I)\neq 0\)</span>, the equation only has a trivial solution 0. Therefore, in order to get the nontrivial solution, the necessary condition is that <span class="math display">\[\det(\mathbf{A}-\lambda I)=0\]</span> It is not a difficult to calculate the eigenvalue <span class="math inline">\(\lambda\)</span>. However, for many students, they may have difficulty in finding the eigenvectors respective to eigenvalue <span class="math inline">\(\lambda\)</span>. In this article, I will introduce a systematic way to find eigenvectors by solving the system of linear equations.</p>
+<p>For eigenvalue <span class="math inline">\(\lambda\)</span>, the solution of <span class="math inline">\((\mathbf{A}-\lambda I)x=0\)</span> are eigenvectors.</p>
+<a id="more"></a>
+<h1 id="systems-of-linear-equation">Systems of linear equation</h1>
+<p>To simply the problem, note <span class="math inline">\(\mathbf{B}=\mathbf{A}-\lambda I\)</span>. Due to the condition <span class="math inline">\(\det \mathbf{B}=\det(\mathbf{A}-\lambda I)=0\)</span>, <span class="math inline">\(rank \mathbf{B}&lt; n\)</span>. And all solutions of <span class="math inline">\(\mathbf{B}x=0\)</span> forms a vector subspace ,which is also noted as <span class="math inline">\(\ker \mathbf{B}\)</span>. This is quite easy to verify.</p>
+<div class="proof">
+<p><em>Proof.</em> <span class="math inline">\(\forall x_1,x_2 \in \ker \mathbf{B}\)</span>, we have <span class="math inline">\(\mathbf{B}x_1=0\)</span> and <span class="math inline">\(\mathbf{B}x_2=0\)</span>,then <span class="math display">\[\mathbf{B}(x_1+x_2)=\mathbf{B}x_1+\mathbf{B}x_2 =0+0=0\]</span> implies <span class="math inline">\((x_1+x_2)\in \ker \mathbf{B}\)</span>, and <span class="math display">\[\mathbf{B}(kx_1)=k\mathbf{B}x_1=k\cdot 0=0\]</span> so <span class="math inline">\(kx_1\in \ker \mathbf{B}\)</span> So <span class="math inline">\(\ker \mathbf{B}\)</span> is a linear subspace. ◻</p>
+</div>
+<p>Since <span class="math inline">\(\det B=0\)</span>, there exists <span class="math inline">\(x\neq 0\in \ker \mathbf{B}\)</span>, therefore <span class="math inline">\(dim\ker \mathbf{B}\geq 1\)</span>.</p>
+<p>In quantum mechanics, <span class="math inline">\(\mathbf{A}\)</span> is usually a hermitian operator, and <span class="math inline">\(dim \ker(\mathbf{A}-\lambda I)\)</span> often equals to the multiplicity of root <span class="math inline">\(\lambda\)</span> in equation <span class="math inline">\(\det(\mathbf{A}-\lambda I)=0\)</span>. If the dimension <span class="math inline">\(\geq 2\)</span>, in quantum mechanics or classical mechanics ,this situation represents the degeneration.</p>
+<p>The equation <span class="math inline">\(\mathbf{B}x=0\)</span>, write explicitly <span class="math display">\[\begin{pmatrix}
+        b_{11}&amp;\cdots&amp;b_{1n}\\
+        \vdots&amp;      &amp;\vdots\\
+        b_{n1}&amp;\cdots&amp;b_{nn}
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1\\ \vdots \\ x_n
+    \end{pmatrix}=0\]</span> We note that <span class="math inline">\(dim\ker \mathbf{B}=m\)</span>, so the <span class="math inline">\(rank \mathbf{B}=n-m=r\)</span>. Use Gauss elimination method, and we can reduce to equations to <span class="math display">\[\left\{
+    \begin{array}{c}
+    b_{11}x_1+b_{12}x_2+\cdots b_{1n}x_n=0\\
+    b_{21}x_1+b_{22}x_2+\cdots b_{2n}x_n=0\\
+    \vdots\\
+    b_{r1}x_1+b_{r2}x_2+\cdots b_{rn}x_n=0
+    \end{array}
+    \right.\]</span></p>
+<p>By some knowledge of matrix, we can show that <span class="math display">\[rank \begin{pmatrix}
+        b_{11}&amp;\cdots &amp;b_{1n}\\
+        \vdots&amp;      &amp;\vdots\\
+        b_{r1}&amp;\cdots&amp;b_{rn}
+    \end{pmatrix}=r\]</span> Therefore, we can assume <span class="math display">\[\det\begin{pmatrix}
+        b_{11}&amp;\cdots &amp;b_{1r}\\
+        \vdots&amp;      &amp;\vdots\\
+        b_{r1}&amp;\cdots&amp;b_{rr}
+    \end{pmatrix}\neq 0\]</span> otherwise, make permutation of <span class="math inline">\(\{x_1,x_2,\cdots x_n\}\)</span>, and switch the column vector of <span class="math inline">\(\mathbf{B}\)</span>. Here is the equation <span class="math display">\[\left\{
+    \begin{array}{c}
+    b_{11}x_1+b_{12}x_2+\dots b_{1r}x_r=-b_{1,r+1}x_{r+1}-b_{1,r+2}x_{r+2}\dots -b_{1n}x_n\\
+    b_{21}x_1+b_{22}x_2+\dots b_{2r}x_r=-b_{2,r+1}x_{r+1}-b_{2,r+2}x_{r+2}\dots -b_{2n}x_n\\
+    \vdots\\
+    b_{r1}x_1+b_{r2}x_2+\dots b_{rr}x_r=-b_{r,r+1}x_{r+1}-b_{r,r+2}x_{r+2}\dots -b_{rn}x_n
+    \end{array}
+    \right.\]</span> This is an equation of <span class="math inline">\(\{x_1,\cdots,x_r\}\)</span> , and <span class="math inline">\(\{x_{r+1},\cdots,x_n\}\)</span> should be viewed as free variables.</p>
+<p>Let <span class="math inline">\(x_{r+1}=1, x_{r+2}=\cdots =x_{r+n}=0\)</span>, by Crammer rule, we can yield a unique solution <span class="math inline">\((x_1,x_2,\cdots,x_r)\)</span>, and we combine <span class="math inline">\(x_{r+1}=1, x_{r+2}=\cdots =x_{r+n}=0\)</span>, we can yield a fundamental solution of<span class="math inline">\(\mathbf{B}x=0\)</span> <span class="math display">\[\eta_1=\begin{pmatrix}
+        x_{11}\\x_{12}\\ \vdots\\x_{1r}\\ 1\\0 \\ \vdots\\0
+    \end{pmatrix}\]</span></p>
+<p>Then we let <span class="math inline">\(x_{r+2}=1\)</span>, <span class="math inline">\(x_{r+1}=x_{r+3}=\cdots x_{n}=0\)</span>, and obtain another fundamental solution: <span class="math display">\[\eta_2=\begin{pmatrix}
+        x_{21}\\x_{22}\\ \vdots\\x_{1r}\\0\\1\\ \vdots\\0
+    \end{pmatrix}\]</span> Similarly, we can obtain <span class="math inline">\(\eta_3,\eta_4,\cdots \eta_{n-r}\)</span>.</p>
+<p>Obviously, <span class="math display">\[\eta_1=\begin{pmatrix}
+        x_{11}\\x_{12}\\ \vdots\\x_{1r}\\ 1\\0 \\ \vdots\\0
+    \end{pmatrix}
+    \eta_2=\begin{pmatrix}
+        x_{21}\\x_{22}\\ \vdots\\x_{2r}\\ 0\\1 \\ \vdots\\0
+    \end{pmatrix}\cdots
+    \eta_{n-r}=\begin{pmatrix}
+        x_{n-r,1}\\x_{n-r,2}\\ \vdots\\x_{n-r,r}\\ 0\\0 \\ \vdots\\1
+    \end{pmatrix}\]</span> are <span class="math inline">\(n-r\)</span> linear independent vectors in <span class="math inline">\(\ker \mathbf{B}\)</span>. And we have assumed that <span class="math inline">\(dim \ker\mathbf{B}=n-r\)</span>; so <span class="math inline">\(\{\eta_1,\cdots\eta_{n-r}\}\)</span> forms a basis of <span class="math inline">\(\ker \mathbf{B}\)</span> i.e <span class="math inline">\(\ker (\mathbf{A}-\lambda I)\)</span>. In other words, <span class="math inline">\(\{\eta_1,\cdots\eta_{n-r}\}\)</span> are eigenvectors with respected to eigenvalue <span class="math inline">\(\lambda\)</span>. And all solution of <span class="math inline">\(\mathbf{B}x=0\)</span>, can be represented by the linear combination of <span class="math inline">\(\eta_1,\cdots\eta_{n-r}\)</span>,i.e. <span class="math display">\[x=k_1\eta_1+\cdots+k_{n-r}\eta_{n-r}\]</span> If we apply the Gram-Schmidt process, then we can get an orthogonal basis of <span class="math inline">\(\ker (\mathbf{A}-\lambda I)\)</span>: <span class="math inline">\(\{\xi_1,\cdots,\xi_{n-r}\}\)</span>, where <span class="math inline">\((\xi_i|\xi_i)=\delta_{ij}\)</span> and <span class="math inline">\(||\xi_i||=1\)</span></p>
+<h1 id="example">Example</h1>
+<p>Here is an example how to solve eigenvalue problem of a symmetric matrix.</p>
+<p><span class="math display">\[\mathbf{A}=\begin{pmatrix}
+    4 &amp;-1 &amp;-1&amp;1\\
+    -1&amp; 4 &amp; 1&amp;-1\\
+    -1&amp; 1 &amp; 4&amp;-1\\
+    1&amp; -1 &amp; -1&amp;4
+\end{pmatrix}\]</span> Find eigenvalue and eigenvectors with respect to the eigenvalue. First of all, solve characteristic equation <span class="math inline">\(\det(\mathbf{A}-\lambda\mathbf{I})=0\)</span> <span class="math display">\[\det\begin{pmatrix}
+    4-\lambda &amp;-1 &amp;-1&amp;1\\
+    -1&amp; 4-\lambda &amp; 1&amp;-1\\
+    -1&amp; 1 &amp; 4-\lambda&amp;-1\\
+    1&amp; -1 &amp; -1&amp;4-\lambda
+\end{pmatrix}=(\lambda-3)^3(\lambda-7)=0\]</span></p>
+<p>So we get two eigenvalues, <span class="math inline">\(\lambda_1=3(\text{3 multiplicity}),\lambda_2=7\)</span>,then we continue to find their eigenvectors.</p>
+<p>For <span class="math inline">\(\lambda_1=3\)</span>, we can find <span class="math inline">\(\dim\ker(\mathbf{A}-3\mathbf{I})=3\)</span> <span class="math display">\[\mathbf{A}-3\mathbf{I}=
+\begin{pmatrix}
+    4-3 &amp;-1 &amp;-1&amp;1\\
+    -1&amp; 4-3 &amp; 1&amp;-1\\
+    -1&amp; 1 &amp; 4-3&amp;-1\\
+    1&amp; -1 &amp; -1&amp;4-3
+\end{pmatrix}\text{Row operation}\Rightarrow
+\begin{pmatrix}
+    1&amp;-1&amp;-1&amp;1\\
+    0&amp;0&amp;0&amp;0\\
+    0&amp;0&amp;0&amp;0\\
+    0&amp;0&amp;0&amp;0
+\end{pmatrix}\]</span> We get <span class="math display">\[x_1=x_2+x_3-x_4\]</span> Let <span class="math inline">\((x_2,x_3,x_4)=(1,0,0)\)</span>, then get a solution <span class="math display">\[\xi_1=\begin{pmatrix}
+    1\\1\\0\\0
+\end{pmatrix}\]</span></p>
+<p>Similarly, let <span class="math inline">\((x_2,x_3,x_4)=(0,1,0)\)</span> and <span class="math inline">\((x_2,x_3,x_4)=(0,0,1)\)</span>,get another two solutions <span class="math display">\[\xi_2=\begin{pmatrix}
+    1\\0\\1\\0
+\end{pmatrix}\quad
+\xi_3=\begin{pmatrix}
+    -1\\0\\0\\1
+\end{pmatrix}\]</span> And <span class="math inline">\(\xi_1,\xi_2,\xi_3\)</span> are eigenvectors with respect to eigenvalue<span class="math inline">\(\lambda_1=3\)</span></p>
+<p>In the same way <span class="math display">\[\mathbf{A}-7\mathbf{I}=\begin{pmatrix}
+    -3 &amp;-1 &amp;-1&amp;1\\
+    -1&amp; -3 &amp; 1&amp;-1\\
+    -1&amp; 1 &amp; -3&amp;-1\\
+    1&amp; -1 &amp; -1&amp;-3
+\end{pmatrix}\text{Row operation}\Rightarrow 
+\begin{pmatrix}
+    -3 &amp;-1 &amp;-1&amp;1\\
+    -1&amp; -3 &amp; 1&amp;-1\\
+    -1&amp; 1 &amp; -3&amp;-1\\
+    0&amp; 0 &amp; 0&amp;0
+\end{pmatrix}\]</span> Let <span class="math inline">\(x_4=1\)</span>, then we have a unique solution <span class="math inline">\((x_1,x_2,x_3)=(1,-1,-1)\)</span>,then <span class="math display">\[\xi_4=\begin{pmatrix}
+    1\\-1\\-1\\1
+\end{pmatrix}\]</span> is the eigenvector with respect to<span class="math inline">\(\lambda_2=7\)</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/math/" rel="tag"># math</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/10/22/Part-1-linear-equations-and-inverse-matrix/" rel="prev" title="Part_1 linear equations and inverse matrix">
+      <i class="fa fa-chevron-left"></i> Part_1 linear equations and inverse matrix
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#systems-of-linear-equation"><span class="nav-number">2.</span> <span class="nav-text">Systems of linear equation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#example"><span class="nav-number">3.</span> <span class="nav-text">Example</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yuhan Wu"
+      src="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+  <p class="site-author-name" itemprop="name">Yuhan Wu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuhan Wu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/blog/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
