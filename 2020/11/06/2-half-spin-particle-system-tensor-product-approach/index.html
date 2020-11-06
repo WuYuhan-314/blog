@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yuhanwu314.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction This article will introduce an application of tensor product in quantum mechanics. Two-particle problem can be very confusing for most of students who study quantum mechanics for first t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2-half-spin-particle system_tensor product approach">
+<meta property="og:url" content="https://yuhanwu314.github.io/blog/2020/11/06/2-half-spin-particle-system-tensor-product-approach/index.html">
+<meta property="og:site_name" content="Yuhan Wu&#39;s personal website">
+<meta property="og:description" content="Introduction This article will introduce an application of tensor product in quantum mechanics. Two-particle problem can be very confusing for most of students who study quantum mechanics for first t">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-06T00:31:16.000Z">
+<meta property="article:modified_time" content="2020-11-06T00:34:29.798Z">
+<meta property="article:author" content="Yuhan Wu">
+<meta property="article:tag" content="tensor product">
+<meta property="article:tag" content="2-particle system">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yuhanwu314.github.io/blog/2020/11/06/2-half-spin-particle-system-tensor-product-approach/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>2-half-spin-particle system_tensor product approach | Yuhan Wu's personal website</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yuhan Wu's personal website</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yuhanwu314.github.io/blog/2020/11/06/2-half-spin-particle-system-tensor-product-approach/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+      <meta itemprop="name" content="Yuhan Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuhan Wu's personal website">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2-half-spin-particle system_tensor product approach
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-11-06 08:31:16 / Modified: 08:34:29" itemprop="dateCreated datePublished" datetime="2020-11-06T08:31:16+08:00">2020-11-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/lecture-notes/" itemprop="url" rel="index"><span itemprop="name">lecture notes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="introduction">Introduction</h1>
+<p>This article will introduce an application of tensor product in quantum mechanics. Two-particle problem can be very confusing for most of students who study quantum mechanics for first time. If we treat this problem with tensor product, it will be much easier to understand. However, understanding the concept of tensor product is even more challenging. If you are unfamiliar with tensor product, you can read my another article <em>Construction of tensor product</em>.</p>
+<p>To simplify the problem, we assume that 2 particles are independent; in other words, they do not interact with each other. By applying tensor product, we can view them in one system. Firstly, we start from how to construct the tensor product of two state space. Then we will study the tensor product of operators. Finally, we will study an important example: the total spin.</p>
+<a id="more"></a>
+<h1 id="some-preparation">Some preparation</h1>
+<h2 id="construction-of-tensor-product">Construction of tensor product</h2>
+<p>As I have introduced in <em>Construction of tensor product</em>, the tensor product <span class="math inline">\(\otimes\)</span> should be viewed as a bilinear map. And <span class="math inline">\(|{\phi}\rangle\)</span> can be viewed as a linear functional of its dual space (for more information, reader can read my article <em>Dual space and inner product</em>). For example: <span class="math display">\[|{\phi}\rangle(\langle{\Phi}|):=\langle{\Phi}|{\phi}\rangle\]</span> By applying a tensor product, we can construct a bilinear functional. For example, <span class="math inline">\(|{\phi}\rangle \in \mathbf{V_1}\)</span> and <span class="math inline">\(|{\psi}\rangle \in \mathbf{V_2}\)</span>; and their dual space <span class="math inline">\(\langle{\Phi}|\in \mathbf{V_1}^*\)</span> and <span class="math inline">\(\langle{\Psi}| \in \mathbf{V_2}^*\)</span>. So the bilinear functional are defined as <span class="math display">\[{|{\phi}\rangle}\otimes{|{\psi}\rangle}(\langle{\Phi}|,\langle{\Psi}|)=\langle{\Phi}|{\phi}\rangle\langle{\Psi}|{\psi}\rangle\]</span> This suggests that we can just multiply the wave function in many cases. Similarly, we can also construct <span class="math inline">\({\langle{\Phi}|}\otimes{\langle{\Psi}|}\)</span>.</p>
+<h2 id="one-particle-situation">One-particle situation</h2>
+<p>Suppose <span class="math inline">\(\mathbf{V_1}\)</span> is a state space of one <span class="math inline">\(\frac{1}{2}\)</span>-spin particle. We choose the eigenvectors of <span class="math inline">\(\mathcal{S}_z\)</span> ,<span class="math inline">\(\{|{+}\rangle,|{-}\rangle\}\)</span> as base, where <span class="math inline">\(\mathcal{S}_z=\frac{\hbar}{2}\sigma_z\)</span> We have <span class="math display">\[\begin{aligned}
+        &amp;\sigma_z|{+}\rangle=|{+}\rangle\\
+        &amp;\sigma_z|{-}\rangle=-|{-}\rangle\\
+        &amp;\sigma_x|{+}\rangle=|{-}\rangle\\
+        &amp;\sigma_x|{-}\rangle=|{+}\rangle
+    \end{aligned}\]</span></p>
+<p>And it is easy to verify that <span class="math inline">\(\sigma_x\)</span> has eigenvalue 1 and -1. <span class="math inline">\(\frac{1}{\sqrt{2}}(|{+}\rangle+|{-}\rangle)\)</span> is the eigenvector of <span class="math inline">\(\sigma_x\)</span> belonging to 1; and <span class="math inline">\(\frac{1}{\sqrt{2}}(|{+}\rangle-|{-}\rangle)\)</span> belongs to -1.</p>
+<h1 id="tensor-product-of-state-space-and-operators">Tensor product of state space and operators</h1>
+<h2 id="tensor-product-of-state-space">Tensor product of state space</h2>
+<p>In this section, we shall use indices 1 and 2 to distinguish two particles. We assume their state spaces are <span class="math inline">\(\mathbf{V_1}\)</span> and <span class="math inline">\(\mathbf{V_2}\)</span> respectively, and their tensor product is <span class="math inline">\(\mathbf{V}={\mathbf{V_1}}\otimes{\mathbf{V_2}}\)</span>.</p>
+<p>Since <span class="math inline">\(\{|{i;\pm}\rangle\}\)</span>,i=1,2, are the bases of <span class="math inline">\(\mathbf{V_1}\)</span> and <span class="math inline">\(\mathbf{V_2}\)</span> respectively. By the property of tensor product, <span class="math inline">\(\{|{i;\pm}\rangle\otimes|{j;\pm}\rangle\}\)</span>, i,j=1,2 is the base of <span class="math inline">\({\mathbf{V_1}}\otimes{\mathbf{V_2}}\)</span></p>
+<p>Then, we turns to the usual notation <span class="math display">\[\begin{aligned}
+        |{++}\rangle=|{1;+}\rangle\otimes|{2;+}\rangle\\
+        |{+-}\rangle=|{1;+}\rangle\otimes|{2;-}\rangle\\
+        |{-+}\rangle=|{1;-}\rangle\otimes|{2;+}\rangle\\
+        |{--}\rangle=|{1;-}\rangle\otimes|{2;-}\rangle\\
+    \end{aligned}\]</span></p>
+<h1 id="tensor-product-of-operators">Tensor product of operators</h1>
+<p>Suppose <span class="math inline">\(\mathcal{A}\)</span> is an operator on <span class="math inline">\(\mathbf{V_1}\)</span>, and <span class="math inline">\(\mathcal{B}\)</span> is an operator on <span class="math inline">\(\mathbf{V_2}\)</span>. For arbitrary <span class="math inline">\(\alpha \in \mathbf{V_1}\)</span>, <span class="math inline">\(\beta \in \mathbf{V_2}\)</span>, the operators in <span class="math inline">\({\mathbf{V_1}}\otimes{\mathbf{V_2}}\)</span> is defined by <span class="math display">\[{\mathcal{A}}\otimes{\mathcal{B}}({\alpha}\otimes{\beta})={\mathcal{A}\alpha}\otimes{\mathcal{B}\beta}\]</span> Here are some examples on 2 <span class="math inline">\(\frac{1}{2}\)</span>-spin particles system. <span class="math display">\[\begin{aligned}
+        {\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2z}}|{++}\rangle&amp;={\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2z}}({|{1;+}\rangle}\otimes{|{2;+}\rangle})\\
+        &amp;=\mathcal{S}_{1z}|{1;+}\rangle\otimes\mathcal{S}_{2z}|{2;+}\rangle\\
+        &amp;=\frac{\hbar}{2}|{1;+}\rangle\otimes\frac{\hbar}{2}|{2;+}\rangle\\
+        &amp;=\frac{\hbar^2}{4}{|{1;+}\rangle}\otimes{|{2;+}\rangle}\\
+        &amp;=\frac{\hbar^2}{4}|{++}\rangle
+    \end{aligned}\]</span> Similarly we can calculate: <span class="math display">\[\begin{aligned}
+        {\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2z}}|{+-}\rangle=-\frac{\hbar^2}{4}|{+-}\rangle\\
+        {\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2z}}|{-+}\rangle=-\frac{\hbar^2}{4}|{-+}\rangle\\
+        {\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2z}}|{--}\rangle=\frac{\hbar^2}{4}|{--}\rangle\\
+    \end{aligned}\]</span></p>
+<p>Another example <span class="math inline">\(\mathcal{S}_{1z}\otimes\mathcal{S}_{1x}\)</span> <span class="math display">\[\begin{aligned}
+        {\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2x}}|{++}\rangle&amp;={\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2x}}(|{1;+}\rangle\otimes|{2;+}\rangle)\\
+        &amp;=\mathcal{S}_{1z}|{1;+}\rangle\otimes\mathcal{S}_{2x}|{2;+}\rangle\\
+        &amp;=\frac{\hbar}{2}|{1;+}\rangle\otimes\frac{\hbar}{2}|{2;-}\rangle\\
+        &amp;=\frac{\hbar^2}{4}|{+-}\rangle
+    \end{aligned}\]</span></p>
+<p>We can calculate in the same way: <span class="math display">\[\begin{aligned}
+        {\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2x}}|{+-}\rangle=\frac{\hbar^2}{4}|{++}\rangle\\
+        {\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2x}}|{-+}\rangle=-\frac{\hbar^2}{4}|{--}\rangle\\
+        {\mathcal{S}_{1z}}\otimes{\mathcal{S}_{2x}}|{--}\rangle=-\frac{\hbar^2}{4}|{-+}\rangle\\
+    \end{aligned}\]</span></p>
+<h1 id="total-spin">Total spin</h1>
+<h2 id="total-spin-operator">Total spin operator</h2>
+<p>To simplify the problem, we firstly discuss the spin on z-direction.<br />
+The total spin operator is defined as <span class="math display">\[\mathcal{S}_{z}={\mathcal{S}_{1z}}\otimes{I_2}+{I_1}\otimes{s_{2z}}\]</span> So, let's investigate it: <span class="math display">\[\begin{aligned}
+         \mathcal{S}_{z}|{++}\rangle&amp;=({\mathcal{S}_{1z}}\otimes{I_2}+{I_1}\otimes{\mathcal{S}_{2z}})({|{1;+}\rangle}\otimes{|{2;+}\rangle})\\
+         &amp;=\mathcal{S}_{1z}|{1;+}\rangle\otimes I_2|{2;+}\rangle+I_1|{1;+}\rangle\otimes \mathcal{S}_{2z}|{2;+}\rangle\\
+         &amp;=\frac{\hbar}{2}|{1;+}\rangle\otimes|{2;+}\rangle+|{1;+}\rangle\otimes \frac{\hbar}{2}|{2;+}\rangle\\
+         &amp;=\frac{\hbar}{2}|{++}\rangle+\frac{\hbar}{2}|{++}\rangle\\
+         &amp;=\hbar|{++}\rangle
+     \end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+         \mathcal{S}_{z}|{+-}\rangle&amp;=({\mathcal{S}_{1z}}\otimes{I_2}+{I_1}\otimes{s_{2z}})({|{1;+}\rangle}\otimes{|{2;-}\rangle})\\
+         &amp;=\mathcal{S}_{1z}|{1;+}\rangle\otimes I_2|{2;-}\rangle+I_1|{1;+}\rangle\otimes s_{2z}|{2;-}\rangle\\
+         &amp;=\frac{\hbar}{2}|{1;+}\rangle\otimes|{2;-}\rangle+|{1;+}\rangle\otimes(-\frac{\hbar}{2})|{2;-}\rangle\\
+         &amp;=0
+     \end{aligned}\]</span> Similarly, <span class="math inline">\(\mathcal{S}_{z}|{-+}\rangle=0\)</span> and <span class="math inline">\(\mathcal{S}_z|{--}\rangle=-\hbar\)</span></p>
+<h2 id="total-spin-of-mathcals_x">Total spin of <span class="math inline">\(\mathcal{S}_{x}\)</span></h2>
+<p>Since <span class="math inline">\(\mathcal{S}_{x}=\frac{\hbar}{2}\sigma_{x}\)</span>, we can study the property of <span class="math inline">\(\sigma_{x}\)</span>, where <span class="math display">\[\sigma_{x}={\sigma_{1x}}\otimes{I_2}+{I_1}\otimes{\sigma_{2x}}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+         \sigma_{x}|{++}\rangle&amp;=({\sigma_{1x}}\otimes{I2}+{I_1}\otimes{\sigma_{2x}})({|{1;+}\rangle}\otimes{|{2;+}\rangle})\\
+         &amp;=\sigma_{1x}|{1;+}\rangle\otimes I_2|{2;+}\rangle+I_1|{1;+}\rangle\otimes\sigma_{2x}|{2;+}\rangle\\
+         &amp;={|{1;-}\rangle}\otimes{|{2;+}\rangle}+{|{1;+}\rangle}\otimes{|{2;-}\rangle}\\
+         &amp;=|{-+}\rangle+|{+-}\rangle
+     \end{aligned}\]</span></p>
+<p>We can calculate in the same way: <span class="math display">\[\begin{aligned}
+         \sigma_{x}|{+-}\rangle=|{--}\rangle+|{++}\rangle\\
+         \sigma_{x}|{-+}\rangle=|{++}\rangle+|{--}\rangle\\
+         \sigma_{x}|{--}\rangle=|{+-}\rangle+|{-+}\rangle\\
+     \end{aligned}\]</span></p>
+<h2 id="the-eigenvalue-problem-of-sigma_x">The eigenvalue problem of <span class="math inline">\(\sigma_{x}\)</span></h2>
+<p>We can note that <span class="math display">\[|{++}\rangle=\begin{pmatrix}
+             1\\0\\0\\0
+         \end{pmatrix}\quad
+         |{+-}\rangle=\begin{pmatrix}
+             0\\1\\0\\0
+         \end{pmatrix}\quad
+         |{-+}\rangle=\begin{pmatrix}
+             0\\0\\1\\0
+         \end{pmatrix}\quad
+         |{--}\rangle=\begin{pmatrix}
+             0\\0\\0\\1
+         \end{pmatrix}\]</span></p>
+<p><span class="math inline">\(\sigma_{x}\)</span> can be written in a matrix form: <span class="math display">\[\sigma_{x}=\begin{pmatrix}
+             0&amp;1&amp;1&amp;0\\
+             1&amp;0&amp;0&amp;1\\
+             1&amp;0&amp;0&amp;1\\
+             0&amp;1&amp;1&amp;0\\
+         \end{pmatrix}\]</span> Let's solve the eigenvalue problem of <span class="math inline">\(\sigma_{x}\)</span> <span class="math display">\[\det(\sigma_{x}-\lambda I)=0 \implies \lambda^2(\lambda-2)(\lambda+2)=0\]</span> So <span class="math inline">\(\sigma_{x}\)</span> has eigenvalue 0(2 multiplicity),2 and -2.</p>
+<p>For <span class="math inline">\(\lambda=0\)</span>, dim<span class="math inline">\(ker \sigma_{x}=2\)</span>, we can find 2 linear independent eigenvectors: <span class="math display">\[\xi_1=\frac{1}{\sqrt{2}}\begin{pmatrix}
+             0\\1\\-1\\0
+         \end{pmatrix}\quad
+         \xi_2=\frac{1}{\sqrt{2}}\begin{pmatrix}
+             1\\0\\0\\-1
+         \end{pmatrix}\]</span></p>
+<p>For <span class="math inline">\(\lambda=2\)</span>, <span class="math inline">\(dim\ker(\sigma_{x}-2I)=1\)</span>, so we can find an eigenvector <span class="math display">\[\xi_3=\frac{1}{2}\begin{pmatrix}
+             1\\1\\1\\1
+         \end{pmatrix}\]</span></p>
+<p>Similarly, for <span class="math inline">\(\lambda=-2\)</span>, <span class="math display">\[\xi_4=\frac{1}{2}\begin{pmatrix}
+             1\\-1\\-1\\1
+         \end{pmatrix}\]</span></p>
+<h2 id="some-discussions">Some discussions</h2>
+<p>First of all, we need to review some results of one particle system. The eigenvector of <span class="math inline">\(\sigma_{x}\)</span>, <span class="math display">\[|{+}\rangle_x=\frac{1}{\sqrt{2}}(|{+}\rangle_z+|{-}\rangle_z)\]</span> <span class="math inline">\(|{+}\rangle_z\)</span> and <span class="math inline">\(|{-}\rangle_z\)</span> are eigenvectors of <span class="math inline">\(\sigma_{z}\)</span>. And <span class="math display">\[|{-}\rangle_x=\frac{1}{\sqrt{2}}(|{+}\rangle_z-|{-}\rangle_z)\]</span></p>
+<p>Now let's study the total spin <span class="math inline">\(\sigma_{x}\)</span>, in two particles system. <span class="math display">\[\begin{aligned}
+        |{++}\rangle_x&amp;=|{1;+}\rangle_x\otimes|{2;+}\rangle_x\\
+        &amp;=\frac{1}{\sqrt{2}}(|{1;+}\rangle_z+|{1;-}\rangle_z)\otimes\frac{1}{\sqrt{2}}(|{2;+}\rangle_z+|{2;-}\rangle_z)\\
+        &amp;=\frac{1}{2}({|{1;+}\rangle_z}\otimes{|{2;+}\rangle_z}+{|{1;+}\rangle_z}\otimes{|{2;-}\rangle_z}+{|{1;-}\rangle_z}\otimes{|{2;+}\rangle_z}+{|{1;-}\rangle_z}\otimes{|{2;-}\rangle_z})\\
+        &amp;=\frac{1}{2}(|{++}\rangle_z+|{+-}\rangle_z+|{-+}\rangle_z+|{--}\rangle_z)\\
+        &amp;=\xi_3
+    \end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+        |{+-}\rangle_x&amp;=|{1;+}\rangle_x\otimes|{2;-}\rangle_x\\
+        &amp;=\frac{1}{\sqrt{2}}(|{1;+}\rangle_z+|{1;-}\rangle_z)\otimes\frac{1}{\sqrt{2}}(|{2;+}\rangle_z-|{2;-}\rangle_z)\\
+        &amp;=\frac{1}{2}(|{++}\rangle+|{-+}\rangle-|{+-}\rangle-|{--}\rangle)\\
+        &amp;=\frac{1}{\sqrt{2}}(\xi_1+\xi_2)
+    \end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+        |{-+}\rangle_x&amp;=|{1;-}\rangle_x\otimes|{2;+}\rangle_x\\
+        &amp;=\frac{1}{\sqrt{2}}(|{1;+}\rangle_z-|{1;-}\rangle_z)\otimes\frac{1}{\sqrt{2}}(|{2;+}\rangle_z+|{2;-}\rangle_z)\\
+        &amp;=\frac{1}{2}(|{++}\rangle_z+|{+-}\rangle_z-|{-+}\rangle_z-|{--}\rangle_z)\\
+        &amp;=\frac{1}{\sqrt{2}}(\xi_2-\xi_1)
+    \end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+        |{--}\rangle_x&amp;=|{1;-}\rangle_x\otimes|{2;-}\rangle_x\\
+        &amp;=\frac{1}{\sqrt{2}}(|{1;+}\rangle_z-|{1;-}\rangle_z)\otimes\frac{1}{\sqrt{2}}(|{2;+}\rangle_z-|{2;-}\rangle_z)\\
+        &amp;=\frac{1}{2}(|{++}\rangle_z+|{--}\rangle_z-|{+-}\rangle_z-|{-+}\rangle_z)\\
+        &amp;=\xi_4
+    \end{aligned}\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/tensor-product/" rel="tag"># tensor product</a>
+              <a href="/blog/tags/2-particle-system/" rel="tag"># 2-particle system</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/10/22/Part-2-linear-equations-and-eigenvalue-problems/" rel="prev" title="Part-2 linear equations and eigenvalue problems">
+      <i class="fa fa-chevron-left"></i> Part-2 linear equations and eigenvalue problems
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#some-preparation"><span class="nav-number">2.</span> <span class="nav-text">Some preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#construction-of-tensor-product"><span class="nav-number">2.1.</span> <span class="nav-text">Construction of tensor product</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#one-particle-situation"><span class="nav-number">2.2.</span> <span class="nav-text">One-particle situation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensor-product-of-state-space-and-operators"><span class="nav-number">3.</span> <span class="nav-text">Tensor product of state space and operators</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tensor-product-of-state-space"><span class="nav-number">3.1.</span> <span class="nav-text">Tensor product of state space</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensor-product-of-operators"><span class="nav-number">4.</span> <span class="nav-text">Tensor product of operators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#total-spin"><span class="nav-number">5.</span> <span class="nav-text">Total spin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#total-spin-operator"><span class="nav-number">5.1.</span> <span class="nav-text">Total spin operator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#total-spin-of-mathcals_x"><span class="nav-number">5.2.</span> <span class="nav-text">Total spin of \(\mathcal{S}_{x}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-eigenvalue-problem-of-sigma_x"><span class="nav-number">5.3.</span> <span class="nav-text">The eigenvalue problem of \(\sigma_{x}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-discussions"><span class="nav-number">5.4.</span> <span class="nav-text">Some discussions</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yuhan Wu"
+      src="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+  <p class="site-author-name" itemprop="name">Yuhan Wu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuhan Wu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/blog/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
