@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yuhanwu314.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction This article is aimed to use tensor product to represent the Dirac equation, then I will show a detailed solution of the free particle. When I first learn Dirac equation, I am quite conf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dirac equation_A tensor product approach">
+<meta property="og:url" content="https://yuhanwu314.github.io/blog/2020/12/15/Dirac-equation-A-tensor-product-approach/index.html">
+<meta property="og:site_name" content="Yuhan Wu&#39;s personal website">
+<meta property="og:description" content="Introduction This article is aimed to use tensor product to represent the Dirac equation, then I will show a detailed solution of the free particle. When I first learn Dirac equation, I am quite conf">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-15T08:03:21.000Z">
+<meta property="article:modified_time" content="2020-12-15T08:12:48.663Z">
+<meta property="article:author" content="Yuhan Wu">
+<meta property="article:tag" content="tensor product">
+<meta property="article:tag" content="Dirac equation">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yuhanwu314.github.io/blog/2020/12/15/Dirac-equation-A-tensor-product-approach/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Dirac equation_A tensor product approach | Yuhan Wu's personal website</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yuhan Wu's personal website</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://yuhanwu314.github.io/blog/2020/12/15/Dirac-equation-A-tensor-product-approach/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+      <meta itemprop="name" content="Yuhan Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuhan Wu's personal website">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Dirac equation_A tensor product approach
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-12-15 16:03:21 / Modified: 16:12:48" itemprop="dateCreated datePublished" datetime="2020-12-15T16:03:21+08:00">2020-12-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/lecture-notes/" itemprop="url" rel="index"><span itemprop="name">lecture notes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="introduction">Introduction</h1>
+<p>This article is aimed to use tensor product to represent the Dirac equation, then I will show a detailed solution of the free particle. When I first learn Dirac equation, I am quite confused about the notation, such as <span class="math inline">\(\alpha\cdot\mathbf{p}\)</span>, and how do spinor operator <span class="math inline">\(\alpha\)</span> interact with momentum operator <span class="math inline">\(\mathbf{p}\)</span>? By using tensor product representation, we can avoid this ambiguity, and we can clear see how these operators act on wave functions. In this way, the operator <span class="math inline">\(\alpha\cdot p\)</span> should be view as tensor product of two operator <span class="math display">\[\alpha\cdot\mathbf{p}={\alpha_1}\otimes{p_1}+{\alpha_2}\otimes{p_2}+{\alpha_3}\otimes{p_3}\]</span> In this article, if we use Dirac representation, the <span class="math inline">\(\alpha_i\)</span> can be represented by <span class="math inline">\({\sigma_1}\otimes{\sigma_i}\)</span>, and the wave function can be represented by <span class="math display">\[\psi=\chi_1\otimes\chi_2\otimes\phi_p\]</span></p>
+<p>To read this article, the reader should be familiar with tensor product and eigenvalue problem. If you are unfamiliar with these topics, I highly recommend you to read my another article <em>Construction of tensor product</em> and <em>Linear equations and eigenvalue problems</em> first. <a id="more"></a> # Derivation of Dirac equation</p>
+<p>The relativistic energy <span class="math inline">\(E=p^2c^2+m_0^2c^4\)</span>, so we assume the square of Hamiltonian operator <span class="math display">\[\mathcal{H}^2=c^2\mathbf{p}^2+m_0^2c^4\]</span> To solve <span class="math inline">\(\mathcal{H}\)</span>, we assume <span class="math display">\[\mathcal{H}=c\alpha\cdot\mathbf{p}+\beta m_0c^2\]</span> Therefore, <span class="math display">\[\begin{aligned}
+        \mathcal{H}^2=(c\alpha\cdot\mathbf{p})^2&amp;=c^2[\alpha_1^2p_1^2+\alpha_2^2p_2^2+\alpha_3^2p_3^2+(\alpha_1\alpha_2+\alpha_2\alpha_1)p_1p_2+(\alpha_1\alpha_3+\alpha_3\alpha_1)p_1p_3+(\alpha_2\alpha_3+\alpha_3\alpha_2)p_2p_3]\\
+        &amp;+m_0c^3[(\alpha_1\beta+\beta\alpha_1)p_1+(\alpha_2\beta+\beta\alpha_2)p_2+(\alpha_3\beta+\beta\alpha_3)p_3]+\beta^2m_0c^4\\
+        &amp;=c^2\mathbf{p}^2+m_0^2c^4
+    \end{aligned}\]</span> Compare the coefficients, then we have,</p>
+<ol type="1">
+<li><p><span class="math inline">\(\alpha_i\alpha_j+\alpha_j\alpha_i=0,i\neq j\)</span></p></li>
+<li><p><span class="math inline">\(\alpha_i\beta+\beta\alpha_i\beta=0\)</span>,i=1,2,3</p></li>
+<li><p><span class="math inline">\(\alpha_1^2=\alpha_2^2=\alpha_3^2=\beta^2\)</span></p></li>
+</ol>
+<p>If we use Dirac representation: <span class="math display">\[\alpha_i=\begin{pmatrix}
+            0&amp;\sigma_i\\
+            \sigma_i&amp; 0
+        \end{pmatrix}\quad
+        \beta=\begin{pmatrix}
+            I&amp;\\
+            &amp;-I
+        \end{pmatrix}\]</span> where <span class="math inline">\(\sigma_i\)</span> is Pauli matrix and <span class="math inline">\(I\)</span> is identity matrix. We can easily check the property above by matrix multiplication. Before continuing to next step, let's review some property of tensor product.</p>
+<h1 id="some-properties-of-tensor-product">Some properties of tensor product</h1>
+<p>Assume that <span class="math inline">\(\mathbf{V}_1\)</span> and <span class="math inline">\(\mathbf{V}_2\)</span> are two linear spaces with bases <span class="math inline">\(\{\alpha_i\}\)</span>,<span class="math inline">\(i=1,2,\cdot,n\)</span> and <span class="math inline">\(\{\beta_j\},j=1,\cdot,m\)</span>. <span class="math inline">\(\mathcal{A}\)</span> is a linear operator on <span class="math inline">\(\mathbf{V}_1\)</span>, with matrix representation <span class="math inline">\(\mathbf{A}=(a_{ij})_{n\times n}\)</span>, which means <span class="math inline">\(\mathcal{A}\alpha_i=\sum_{k}a_{ki}\alpha_k\)</span>.<br />
+<span class="math inline">\(\mathcal{B}\)</span> is a linear operator on <span class="math inline">\(\mathbf{V}_2\)</span> with matrix representation <span class="math inline">\(\mathbf{B}=(b_ij)_{m\times m}\)</span>, which means <span class="math inline">\(\mathcal{B}\beta_j=\sum_{l}b_{lj}\beta_l\)</span></p>
+<p>We can mix two vector space by tensor product, <span class="math inline">\({\mathbf{V}_1}\otimes{\mathbf{V}_2}\)</span> with basis <span class="math inline">\({\alpha_i}\otimes{\beta_j},i=1,\cdots,n\)</span> and <span class="math inline">\(j=1,\cdots,m\)</span>. <span class="math inline">\({\mathcal{A} }\otimes{\mathcal{B} }\)</span> is a linear operator on <span class="math inline">\({V_1}\otimes{V_2}\)</span>. <span class="math display">\[\begin{aligned}
+        {\mathcal{A} }\otimes{\mathcal{B} }({\alpha_i}\otimes{\beta_j})&amp;={\mathcal{A}\alpha_i}\otimes{\mathcal{B}\beta_j}\\
+        &amp;={\sum_{k}a_{ki}\alpha_k}\otimes{\sum_{l}b_lj\beta_l}\\
+        &amp;=\sum_{kl}a_{ki}b_{lj}{\alpha_k}\otimes{\beta_l}
+    \end{aligned}\]</span> If we rearrange the basis, <span class="math inline">\({\alpha_1}\otimes{\beta_1},{\alpha_1}\otimes{\beta_2},\cdots, {\alpha_1}\otimes{\beta_m}\)</span>,<span class="math inline">\({\alpha_2}\otimes{\beta_1},{\alpha_2}\otimes{\beta_2},\cdots, {\alpha_2}\otimes{\beta_m}\)</span>,<span class="math inline">\(cdots\)</span> <span class="math inline">\({\alpha_n}\otimes{\beta_1},{\alpha_n}\otimes{\beta_2},\cdots,{\alpha_n}\otimes{\beta_m}\)</span>.</p>
+<p>Then we can find the matrix representation of <span class="math inline">\({\mathcal{A} }\otimes{\mathcal{B} }\)</span> is <span class="math display">\[\begin{pmatrix}
+            a_{11}\mathbf{B}&amp;a_{12}\mathbf{B}&amp;\cdots &amp;a_{1n}\mathbf{B}\\
+            a_{21}\mathbf{B}&amp;a_{22}\mathbf{B}&amp;\cdots &amp;a_{2n}\mathbf{B}\\
+            \vdots          &amp;\vdots          &amp;       &amp;\vdots\\
+            a_{n1}\mathbf{B}&amp;a_{n2}\mathbf{B}&amp;\cdots&amp;a_{nn}\mathbf{B}   
+        \end{pmatrix}\]</span></p>
+<h1 id="tensor-product-representation">Tensor product representation</h1>
+<h2 id="motivation">Motivation</h2>
+<p>Let's have a look on <span class="math inline">\(\alpha_i\)</span> <span class="math display">\[\alpha_i=\begin{pmatrix}
+            0&amp;\sigma_i\\
+            \sigma_i&amp;0
+        \end{pmatrix}=\begin{pmatrix}
+            0&amp;1\\
+            1&amp;0
+        \end{pmatrix}\otimes \sigma_i={\sigma_1}\otimes{\sigma_i}\]</span> and <span class="math inline">\(\beta\)</span> <span class="math display">\[\beta=\begin{pmatrix}
+            I&amp;\\
+            &amp;-I
+        \end{pmatrix}=\sigma_3\otimes I\]</span></p>
+<h2 id="pauli-matrix">Pauli matrix</h2>
+<p>Before we check the availability of this representation, let's review the property of Pauli matrix. <span class="math display">\[\sigma_1=\begin{pmatrix}
+            &amp;1\\
+            1&amp;
+        \end{pmatrix}\quad
+        \sigma_2=\begin{pmatrix}
+            &amp;-i\\
+            i&amp;
+        \end{pmatrix}\quad
+        \sigma_3=\begin{pmatrix}
+            1&amp;\\
+            &amp;-1
+        \end{pmatrix}\]</span></p>
+<p>It is easily to verify</p>
+<ol type="1">
+<li><p><span class="math inline">\(\sigma_1^2=\sigma_2^2\sigma_3^2=I\)</span></p></li>
+<li><p><span class="math inline">\(\sigma_i\sigma_j+\sigma_j\sigma_i=0\)</span>, if <span class="math inline">\(i\neq j\)</span></p></li>
+<li><p><span class="math inline">\(\sigma_i\sigma_j=\sum_k\epsilon_{ijk}\sigma_k\)</span>, if <span class="math inline">\(i\neq j\)</span>, <span class="math inline">\(\epsilon_{ijk}\)</span> is Levi-Civita tensor.</p></li>
+</ol>
+<h2 id="check">Check</h2>
+<p><span class="math display">\[\alpha_i^2=({\sigma_1}\otimes{\sigma_i})({\sigma_1}\otimes{\sigma_i})={\sigma_1\sigma_1}\otimes{\sigma_i\sigma_i}={I}\otimes{I}\]</span> <span class="math display">\[\beta^2=({\sigma_3}\otimes{I})({\sigma_3}\otimes{I})={\sigma_3^2}\otimes{I^2}={I}\otimes{I}\]</span> For <span class="math inline">\(i\neq j\)</span> <span class="math display">\[\begin{aligned}
+        \{\alpha_i,\alpha_j\}=\alpha_i\alpha_j+\alpha_j\alpha_i&amp;=({\sigma_1}\otimes{\sigma_i})({\sigma_1}\otimes{\sigma_j})+({\sigma_1}\otimes{\sigma_j})({\sigma_1}\otimes{\sigma_i})\\
+        &amp;={\sigma_1^2}\otimes{\sigma_i\sigma_j}+{\sigma_1^2}\otimes{\sigma_j\sigma_i}\\
+        &amp;={I}\otimes{\sigma_i\sigma_j+\sigma_j\sigma_i}\\
+        &amp;={I}\otimes{0}=0
+    \end{aligned}\]</span></p>
+<p>Then <span class="math display">\[\begin{aligned}
+        \{\alpha_i,\beta\}=\alpha_i\beta+\beta\alpha_i&amp;=({\sigma_1}\otimes{\sigma_i})({\sigma_3}\otimes{I})+({\sigma_3}\otimes{I})({\sigma_1}\otimes{\sigma_i})\\
+        &amp;={\sigma_1\sigma_3}\otimes{\sigma_iI}+{\sigma_3\sigma_1}\otimes{I\sigma_i}\\
+        &amp;={(\sigma_1\sigma_3+\sigma_3\sigma_1)}\otimes{\sigma_i}\\
+        &amp;={0}\otimes{\sigma_i}=0
+    \end{aligned}\]</span></p>
+<p>Therefore, the tensor product representation is well defined.</p>
+<h1 id="solve-free-dirac-equation">Solve free Dirac equation</h1>
+<p>The Hamiltonian <span class="math inline">\(\mathcal{H}=c\alpha\cdot\mathbf{p}+\beta m_0c^2\)</span></p>
+<h2 id="wave-function-space">Wave function space</h2>
+<p>To solve the Dirac equation, we firstly need to study the space of wave function.</p>
+<p>First of all, we analyze the operator <span class="math inline">\(\alpha_i\)</span>, <span class="math display">\[\alpha_i={\sigma_1}\otimes{\sigma_i}\]</span> so the correspond vector space is the tensor product of two spin space <span class="math inline">\({\mathbf{V}_{s1} }\otimes{\mathbf{V}_{s2} }\)</span>, where <span class="math inline">\(\mathbf{V}_{s1}\)</span> and <span class="math inline">\(\mathbf{V}_{s2}\)</span> are two 2-dimensional vector space, with bases <span class="math inline">\(\{\chi_{1+},\chi_{1-}\}\)</span> and <span class="math inline">\(\{\chi_{2+},\chi_{2-}\}\)</span>.</p>
+<p>Then another important step is that we should combine the spin wave function space and momentum wave function space, <span class="math inline">\(\mathbf{V}_p\)</span>, by tensor product. <span class="math display">\[\mathbf{V}_{\psi}={\mathbf{V}_{s1} }\otimes{\mathbf{V}_{s2} }\otimes{\mathbf{V}_p}\]</span> Therefore, the wave function should be written in form <span class="math display">\[\psi={\chi_1}\otimes{\chi_2}\otimes{\phi_p}\]</span> Here we use index 1,2 to distinguish two spin space wave function. So, <span class="math inline">\(\alpha_i\)</span> should be viewed as <span class="math inline">\({\sigma_1}\otimes{\sigma_i}\otimes{I_p}\)</span>, <span class="math inline">\(p_i\)</span> should be viewed as <span class="math inline">\({I_1}\otimes{I_2}\otimes{p_i}\)</span>. Therefore, <span class="math display">\[\alpha_i p_i={\sigma_1}\otimes{\sigma_i}\otimes{p_i}\]</span> and <span class="math display">\[\beta={\sigma_3}\otimes{I_2}\otimes{I_p}\]</span></p>
+<p>The Hamiltonian can be written as, <span class="math display">\[\begin{aligned}
+        \mathcal{H}&amp;=c\alpha\cdot\mathbf{p}+ \beta m_0c^2\\
+        &amp;=c({\sigma_1}\otimes{\sigma_1}\otimes{p_1}+{\sigma_1}\otimes{\sigma_2}\otimes{p_2}+{\sigma_1}\otimes{\sigma_3}\otimes{p_3})+m_0c^2 {\sigma_3}\otimes{I_2}\otimes{I_p}
+    \end{aligned}\]</span></p>
+<h2 id="the-base-to-wave-function-space">The base to wave function space</h2>
+<p>To simplify the problem, we assume the momentum <span class="math inline">\(\mathbf{p}\)</span> is fixed, then we have the momentum eigenfunction <span class="math inline">\(\phi_p\)</span>. So, the wave function space <span class="math inline">\(V_{\psi}\)</span> will be reduced to <span class="math inline">\({\mathbf{V}_{s1} }\otimes{\mathbf{V}_{s2} }\otimes{span\{\phi_p\} }\)</span>, <span class="math display">\[Dim\mathbf{V}_{\psi}=Dim\mathbf{V}_{s1}\cdot Dim\mathbf{V}_{s2}\cdot Dim \{\phi_p\}=2\cdot2\cdot 1=4\]</span></p>
+<p>Then we can choose the base of wave function space. <span class="math display">\[\begin{aligned}
+        \psi_1={\chi_{1+} }\otimes{\chi_{2+} }\otimes{\phi_p}\\
+        \psi_2={\chi_{1+} }\otimes{\chi_{2-} }\otimes{\phi_p}\\
+        \psi_3={\chi_{1-} }\otimes{\chi_{2+} }\otimes{\phi_p}\\
+        \psi_4={\chi_{1-} }\otimes{\chi_{2-} }\otimes{\phi_p}
+    \end{aligned}\]</span></p>
+<p>It is very easy to verify this is an orthogonal basis. For example, <span class="math display">\[\begin{aligned}
+        \langle{\psi_1}|{\psi_1}\rangle&amp;=\langle{ {\chi_{1+} }\otimes{\chi_{2+} }\otimes{\phi_p} }|{ {\chi_{1+} }\otimes{\chi_{2+} }\otimes{\phi_p} }\rangle\\
+        &amp;=\langle{\chi_{1+} }|{\chi_{1+} }\rangle\langle{\chi_{2+} }|{\chi_{2+} }\rangle\langle{\phi_p}|{\phi_p}\rangle\\
+        &amp;=1\cdot1\cdot 1=1
+    \end{aligned}\]</span></p>
+<p>and <span class="math display">\[\begin{aligned}
+        \langle{\psi_1}|{\psi_2}\rangle&amp;=\langle{ {\chi_{1+} }\otimes{\chi_{2+} }\otimes{\phi_p} }|{ {\chi_{1+} }\otimes{\chi_{2-} }\otimes{\phi_p} }\rangle\\
+        &amp;=\langle{\chi_{1+} }|{\chi_{1+} }\rangle\langle{\chi_{2+} }|{\chi_{2-} }\rangle\langle{\phi_p}|{\phi_p}\rangle\\
+        &amp;=1\cdot0\cdot 1=0
+    \end{aligned}\]</span></p>
+<p>Therefore, we can let <span class="math display">\[\psi_1=\begin{pmatrix}
+            1\\0\\0\\0
+        \end{pmatrix}\quad
+        \psi_2=\begin{pmatrix}
+            0\\1\\0\\0
+        \end{pmatrix}\quad
+        \psi_3=\begin{pmatrix}
+            0\\0\\1\\0
+        \end{pmatrix}\quad
+        \psi_4=\begin{pmatrix}
+            0\\0\\0\\1
+        \end{pmatrix}\]</span></p>
+<h2 id="matrix-representation-of-mathcalh">Matrix representation of <span class="math inline">\(\mathcal{H}\)</span></h2>
+<p><span class="math display">\[\begin{aligned}
+        \mathcal{H}\psi_1&amp;=[c({\sigma_1}\otimes{\sigma_1}\otimes{p_1}+{\sigma_1}\otimes{\sigma_2}\otimes{p_2}+{\sigma_1}\otimes{\sigma_3}\otimes{p_3})+m_0c^2{\sigma_3}\otimes{I_2}\otimes{I_p}]{\chi_{1+} }\otimes{\chi_{2+} }\otimes{\phi_p}\\
+        &amp;=c({\sigma_1\chi_{1+} }\otimes{\sigma_1\chi_{2+} }\otimes{p_1\phi_p}+{\sigma_1\chi_{1+} }\otimes{\sigma_2\chi_{2+} }\otimes{p_2\phi_p}+{\sigma_1\chi_{1+} }\otimes{\sigma_3\chi_{2+} }\otimes{p_3\phi_p})\\
+        &amp;+m_0c^2{\sigma_3\chi_{1+} }\otimes{I_2\chi_{2+} }\otimes{I_p\phi_p}\\
+        &amp;=c({\chi_{1-} }\otimes{\chi_{2-} }\otimes{p_1\phi_p}+{\chi_{1+} }\otimes{i\chi_{2-} }\otimes{p_2\phi_p}+{\chi_{1-} }\otimes{\chi_{2+} }\otimes{p_3\phi_p})+m_0c^2{\chi_{1+} }\otimes{\chi_{2+} }\otimes{\phi_p}\\
+        &amp;=m_0c^2\psi_1+cp_3\psi_3+c(p_1+ip_2)\psi_4
+    \end{aligned}\]</span> Similarly, we can calculate <span class="math display">\[\begin{aligned}
+        \mathcal{H}\psi_2=m_0c^2\psi_2+c(p_1-ip_2)\psi_3-cp_3\phi_4\\
+        \mathcal{H}\psi_3=cp_3\psi_1+c(p_1+ip_2)\psi_2-m_0c^2\psi_3\\
+        \mathcal{H}\psi_4=c(p_1-ip_2)\psi_1-cp_3\psi_2-m_0c^2\psi_4
+    \end{aligned}\]</span></p>
+<p>So the matrix representation of <span class="math inline">\(\mathcal{H}\)</span> is <span class="math display">\[\mathbf{H}=\begin{pmatrix}
+            m_0c^2  &amp;0  &amp;cp_3   &amp;c(p_1+ip_2)\\
+            0       &amp;m_0c^2 &amp;c(p_1-ip_2)&amp;cp_3\\
+            cp_3&amp;c(p_1+ip_2)&amp;-m_0c^2&amp;0\\
+            c(p_1-ip_2)&amp;-cp_3&amp;0&amp;-m_0c^2      
+        \end{pmatrix}\]</span></p>
+<h2 id="eigenvalue-problem">Eigenvalue problem</h2>
+<p>Let's now consider the eigenvalue problem. <span class="math display">\[\mathcal{H}\phi=E\phi\]</span></p>
+<p>We need to calculate the <span class="math inline">\(\det(\mathcal{H}-IE)\)</span> <span class="math display">\[\mathcal{H}-IE=  \begin{pmatrix}
+            m_0c^2 -E &amp;0  &amp;cp_3   &amp;c(p_1+ip_2)\\
+            0       &amp;m_0c^2 -E&amp;c(p_1-ip_2)&amp;cp_3\\
+            cp_3&amp;c(p_1+ip_2)&amp;-m_0c^2-E&amp;0\\
+            c(p_1-ip_2)&amp;-cp_3&amp;0&amp;-m_0c^2-E    
+        \end{pmatrix}\]</span></p>
+<p>To calculate the determinant, we need to use a trick. <span class="math display">\[\det\begin{pmatrix}
+            A&amp;B\\
+            C&amp;D
+        \end{pmatrix}=\det\begin{pmatrix}
+            A-BD^{-1}C&amp;B\\
+            0&amp;D
+        \end{pmatrix}=\det(AD-BD^{-1}CD)=\det(AD-BC)\]</span> when C and D are commutable.</p>
+<p>Here <span class="math display">\[A=\begin{pmatrix}
+            m_0c^2-E&amp;0\\ 0&amp; m_0c^2-E
+        \end{pmatrix}\quad
+        B=C=\begin{pmatrix}
+            cp_3&amp;c(p_1+ip_2)\\c(p_1-ip_2)&amp;-cp_3
+        \end{pmatrix}\quad
+        D=\begin{pmatrix}
+            -m_0c^2-E&amp;0\\0&amp;-m_0c^2-E
+        \end{pmatrix}\]</span> And <span class="math display">\[AD=\begin{pmatrix}
+            m_0c^2-E&amp;0\\ 0&amp; m_0c^2-E
+        \end{pmatrix}
+        \begin{pmatrix}
+            -m_0c^2-E&amp;0\\0&amp;-m_0c^2-E
+        \end{pmatrix}=
+        \begin{pmatrix}
+            E^2-m_0^2c^4&amp;0\\0&amp;E^2-m_0^2c^4
+        \end{pmatrix}\]</span></p>
+<p><span class="math display">\[BC=\begin{pmatrix}
+            cp_3&amp;c(p_1+ip_2)\\c(p_1-ip_2)&amp;-cp_3
+        \end{pmatrix}^2=
+        \begin{pmatrix}
+            c^2p^2&amp;0\\0&amp;c^2p^2
+        \end{pmatrix}\]</span> where <span class="math inline">\(p^2=p_1^2+p_2^2+p_3^2\)</span></p>
+<p>Therefore, <span class="math display">\[AD-BC=\begin{pmatrix}
+            E^2-m_0^2c^4-c^2p^2&amp;0\\0&amp; E^2-m_0^2c^4-c^2p^2
+        \end{pmatrix}\]</span></p>
+<p>In conclude, <span class="math display">\[\det(\mathcal{H}-IE)=\det\begin{pmatrix}
+            E^2-m_0^2c^4-c^2p^2&amp;0\\0&amp; E^2-m_0^2c^4-c^2p^2
+        \end{pmatrix}=(E^2-m_0^2c^4-c^2p^2)^2\]</span></p>
+<p>Here we get two eigenvalues <span class="math inline">\(E=\sqrt{m_0^2c^4+c^2p^2}\)</span> and <span class="math inline">\(E=-\sqrt{m_0^2c^4+c^2p^2}\)</span>, both are double degeneration, because they both are roots with double multiplications. So their correspond eigenspaces are two-dimensional. To make the notation simple, we note <span class="math inline">\(E_0=\sqrt{m_0^2c^4+c^2p^2}\)</span>. Now, let's find their correspond eigen-state.</p>
+<p>For <span class="math inline">\(E=\sqrt{m_0^2c^4+c^2p^2}\)</span>, the linear equation <span class="math inline">\(\mathcal{H}-IE=0\)</span> can be reduced to, <span class="math display">\[\left\{
+            \begin{array}[c]
+                cp_3x_1+c(p_1+ip_2)x_2-(m_oc^2+E_0)x_3=0\\
+                c(p_1-ip_2)x_1-cp_3x_2-(m_0c^2+E_0)x_4=0
+            \end{array}
+        \right.\]</span> Here we set <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> as free variables, get the fundamental solution: <span class="math display">\[\xi_1=\begin{pmatrix}
+            1\\0\\ \frac{cp_3}{m_0c^2+E_0}\\ \frac{c(p_1-ip_2)}{m_0c^2+E_0}
+        \end{pmatrix}\quad
+        \xi_2=\begin{pmatrix}
+            0\\1\\ \frac{c(p_1+ip_2)}{m_0c^2+E_0} \\ \frac{-cp_3}{m_0c^2+E_0}
+        \end{pmatrix}\]</span></p>
+<p>For <span class="math inline">\(E=-\sqrt{m_0^2c^4+c^2p^2}\)</span>, linear equation <span class="math inline">\(\mathcal{H}-IE=0\)</span> can be reduced to <span class="math display">\[\left\{
+            \begin{array}
+                cp_3x_3+(m_0c^2+E_0)x_1+c(p_1+ip_2)x_4=0\\
+                (m_0c^2+E_0)x_2+c(p_1-ip_2)x_3-cp_3x_4=0
+            \end{array}
+            \right.\]</span> We set <span class="math inline">\(x_3\)</span> and <span class="math inline">\(x_4\)</span> as free variables, get the fundamental solution: <span class="math display">\[\xi_3=\begin{pmatrix}
+            \frac{-cp_3}{m_0c^2+E_0}\\ \frac{-c(p_1-ip_2)}{m_0c^2+E_0}\\1\\0
+        \end{pmatrix}\quad
+        \xi_4=\begin{pmatrix}
+            \frac{-c(p_1+ip_2)}{m_0c^2+E_0}\\ \frac{cp_3}{m_0c^2+E_0}\\0\\1
+        \end{pmatrix}\]</span> Now, we have solved the eigenvalue problem. There are two eigenvalues <span class="math inline">\(E=+E_0\)</span> and <span class="math inline">\(E=-E_0\)</span>. For <span class="math inline">\(E=+E_0\)</span>, there are two eigenvectors <span class="math inline">\(\xi_1\)</span> and <span class="math inline">\(\xi_2\)</span>. For <span class="math inline">\(E=-E_0\)</span>, there are two eigenvectors <span class="math inline">\(\xi_3\)</span> and <span class="math inline">\(\xi_4\)</span>.</p>
+<h1 id="sigmacdotmathbfp-representation"><span class="math inline">\(\sigma\cdot\mathbf{p}\)</span> Representation</h1>
+<p>If <span class="math inline">\(\sigma\cdot\mathbf{p}\)</span> and <span class="math inline">\(\mathcal{H}\)</span> are commutable, then they have the same eigenvectors. So, we can use the eigenvectors of <span class="math inline">\(\sigma\cdot\mathbf{p}\)</span> to represent <span class="math inline">\(\mathcal{H}\)</span>, then we will solve the eigenvalue problem of <span class="math inline">\(\mathcal{H}\)</span>. Here, <span class="math inline">\(\sigma\cdot\mathbf{p}\)</span> should be viewed as <span class="math inline">\((\sum_{i=1}^{3}{I_1}\otimes{\sigma_i}\otimes{p_i})\)</span></p>
+<h2 id="sigmacdotmathbfpmathcalh0"><span class="math inline">\([\sigma\cdot\mathbf{p},\mathcal{H}]=0\)</span></h2>
+<p>To check <span class="math inline">\([\sigma\cdot\mathbf{p},\mathcal{H}]=0\)</span>, we only need to check <span class="math inline">\([\sigma\cdot\mathbf{p},\alpha\cdot\mathbf{p}]=0\)</span> and <span class="math inline">\([\sigma\cdot\mathbf{p},\beta]=0\)</span></p>
+<p>First step, <span class="math inline">\([\sigma\cdot\mathbf{p},\alpha\cdot\mathbf{p}]=0\)</span> <span class="math display">\[\begin{aligned}
+&amp;=[\sum_{i=1}^{3}{I_1}\otimes{\sigma_i}\otimes{p_i},\sum_{j=1}^{3}{\sigma_1}\otimes{\sigma_j}\otimes{p_j}]\\
+        &amp;=\sum_{i,j}\{ {I_1\sigma_1}\otimes{\sigma_i\sigma_j}\otimes{p_ip_j}-{\sigma_1I_1}\otimes{\sigma_j\sigma_i}\otimes{p_jp_i}\}\\
+        &amp;=\sum_{i,j}{\sigma_1}\otimes{[\sigma_i\sigma_j-\sigma_j\sigma_i]}\otimes{p_ip_j}\\
+        &amp;=\sum_{i,j}{\sigma_1}\otimes{2\sum_k\epsilon_{ijk}\sigma_k}\otimes{p_ip_j}\\
+        &amp;=0
+    \end{aligned}\]</span> To verify the last step, we fix k=1. <span class="math inline">\(\epsilon_{ij1}=1\)</span> for i=2 and j=3; <span class="math inline">\(\epsilon_{ij1}=-1\)</span> for i=3,j=2; and <span class="math inline">\(\epsilon_{ij1}=0\)</span>, otherwise. <span class="math display">\[\sum_{i,j}{\sigma_1}\otimes{2\epsilon_{ij1}\sigma_k}\otimes{p_ip_j}={\sigma_1}\otimes{2\sigma_1}\otimes{p_1p_2}+{\sigma_1}\otimes{-2\sigma_2}\otimes{p_1p_2}=0\]</span></p>
+<p>Second step, <span class="math display">\[\begin{aligned}
+&amp;=[\sum_{i=1}^3{I_1}\otimes{\sigma_i}\otimes{p_i},{\sigma_3}\otimes{I_2}\otimes{T_p}]\\
+        &amp;=\sum_{i=1}^3\{ {I_1\sigma_3}\otimes{\sigma_iI_2}\otimes{p_iI_p}-{\sigma_3I_1}\otimes{I_2\sigma_i}\otimes{I_pp_i}\}\\
+        &amp;=0
+    \end{aligned}\]</span></p>
+<h2 id="eigenvalue-problem-of-sigmacdotmathbfp">Eigenvalue problem of <span class="math inline">\(\sigma\cdot\mathbf{p}\)</span></h2>
+<p>Review the base, <span class="math display">\[\begin{aligned}
+        \psi_1={\chi_{1+} }\otimes{\chi_{2+} }\otimes{\phi_p}\\
+        \psi_2={\chi_{1+} }\otimes{\chi_{2-} }\otimes{\phi_p}\\
+        \psi_3={\chi_{1-} }\otimes{\chi_{2+} }\otimes{\phi_p}\\
+        \psi_4={\chi_{1-} }\otimes{\chi_{2-} }\otimes{\phi_p}
+    \end{aligned}\]</span></p>
+<p>We want to find the eigenvector of <span class="math inline">\(\sigma\cdot\mathbf{p}\)</span> <span class="math display">\[\begin{aligned}
+        (\sigma\cdot\mathbf{p})\psi_1&amp;={I_1\chi_{1+} }\otimes{\sigma_1\chi_{2+} }\otimes{p_1\phi_p}+{I_1\chi_{1+} }\otimes{\sigma_2\chi_{2+} }\otimes{p_2\phi_p}+{I_1\chi_1}\otimes{\sigma_3\chi_{2+} }\otimes{p_3\phi_p}\\
+        &amp;=p_3\psi_1+(p_1+ip_2)\psi_2\\
+        &amp;=p[\cos\theta\psi_1+\sin\theta e^{i\varphi}\psi_2]
+    \end{aligned}\]</span> Here we take polar coordinates, <span class="math inline">\(\mathbf{p}=p\mathbf{n}\)</span>, where <span class="math inline">\(\mathbf{n}=(\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta)\)</span></p>
+<p>Similarly, we calculate <span class="math display">\[\begin{aligned}
+        (\sigma\cdot\mathbf{p})\psi_2&amp;=p[\sin\theta e^{-i\varphi}\psi_1-\cos\theta\psi_2]\\
+        (\sigma\cdot\mathbf{p})\psi_3&amp;=p[\cos\theta\psi_3+\sin\theta e^{i\varphi}\psi_4]\\
+        (\sigma\cdot\mathbf{p})\psi_4&amp;=p[\sin\theta e^{-i\varphi}\psi_3-\cos\theta\psi_4]
+    \end{aligned}\]</span></p>
+<p>The matrix representation of <span class="math inline">\(\sigma\cdot\mathbf{p}\)</span> is <span class="math display">\[\sigma\cdot\mathbf{p}=p
+        \begin{pmatrix}
+            \cos\theta&amp;\sin\theta e^{i\varphi}&amp; &amp;\\
+            \sin\theta e^{-i\varphi}&amp;-\cos\theta&amp; &amp;\\
+            &amp;&amp;\cos\theta&amp;\sin\theta e^{i\varphi}\\
+            &amp;&amp;\sin\theta e^{-i\varphi}&amp;-\cos\theta\\
+        \end{pmatrix}\]</span></p>
+<p>To simplify the problem, we only solve the eigenvalue problem of <span class="math inline">\(\sigma\cdot\mathbf{n}\)</span> <span class="math display">\[\det(\sigma\cdot\mathbf{n}-\lambda I)=\det^2
+        \begin{pmatrix}
+            \cos\theta-\lambda&amp;\sin\theta e^{i\varphi} \\
+            \sin\theta e^{-i\varphi}&amp;-\cos\theta-\lambda \\   
+        \end{pmatrix}=(\lambda-1)^2(\lambda+1)^2\]</span> So we get two eigenvalue <span class="math inline">\(\lambda_1=1\)</span> (double root) and <span class="math inline">\(\lambda_2=-1\)</span>(double root)</p>
+<p>Now let's find out the eigenvector.<br />
+For <span class="math inline">\(\lambda=1\)</span>, the linear equation <span class="math inline">\(\sigma\cdot\mathbf{p}-\lambda_1I=0\)</span>,can be reduced to <span class="math display">\[\begin{aligned}
+        &amp;\sin\theta e^{-i\varphi}x_1-(\cos\theta+1)x_2=0\\
+        &amp;\sin\theta e^{-i\varphi}x_3-(\cos\theta+1)x_4=0
+    \end{aligned}\]</span> Set <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span> as free variable, we can get eigenvector, <span class="math display">\[|{n,+}\rangle_1=\begin{pmatrix}
+            1\\\tan\frac{\theta}{2}e^{-i\varphi}\\0\\0
+        \end{pmatrix}\quad
+        |{n,+}\rangle_2=\begin{pmatrix}
+            0\\0\\1\\\tan\frac{\theta}{2}e^{-i\varphi}
+        \end{pmatrix}\]</span></p>
+<p>For <span class="math inline">\(\lambda=-1\)</span>, apply the same procedure, we can find the eigenvector, <span class="math display">\[|{n,-}\rangle_1=\begin{pmatrix}
+            \tan\frac{\theta}{2}e^{i\varphi}\\-1\\0\\0
+        \end{pmatrix}\quad
+        |{n,-}\rangle_2=\begin{pmatrix}
+            0\\0\\\tan\frac{\theta}{2}e^{i\varphi}\\-1
+        \end{pmatrix}\]</span></p>
+<h2 id="eigenvalue-problem-of-mathcalh">Eigenvalue problem of <span class="math inline">\(\mathcal{H}\)</span></h2>
+<p>Here we will study the eigenvalue problem of <span class="math inline">\(\mathcal{H}\)</span> under the basis of <span class="math inline">\(\{|{n,\pm}\rangle_{1,2}\}\)</span></p>
+<p>First of all, let's calculate <span class="math inline">\(\mathcal{H}|{n,+}\rangle_1\)</span>. This is quite complicate, so we can use a trick. <span class="math display">\[\mathcal{H}=\begin{pmatrix}
+            m_0c^2I&amp;cp\sigma\cdot\mathbf{n}\\
+            cp\sigma\cdot\mathbf{n}&amp;-m_0c^2I
+        \end{pmatrix}\]</span> where <span class="math inline">\(I\)</span> is identity Matrix, and <span class="math display">\[\sigma\cdot\mathbf{n}=\begin{pmatrix}
+            \cos\theta&amp;\sin\theta e^{i\varphi}\\ \sin\theta e^{-i\varphi}&amp;-\cos\theta
+        \end{pmatrix}\]</span> Then <span class="math inline">\(|{n,+}\rangle_1\)</span> and <span class="math inline">\(|{n,+}\rangle_2\)</span> can be expressed as <span class="math display">\[|{n,+}\rangle_1=\begin{pmatrix}
+            |{n,+}\rangle\\0
+        \end{pmatrix}\quad
+        |{n,+}\rangle_2=\begin{pmatrix}
+            0\\ |{n,+}\rangle
+        \end{pmatrix}\]</span> where, <span class="math display">\[|{n,+}\rangle=\begin{pmatrix}
+            1\\ \tan\frac{\theta}{2}e^{-i\varphi}
+        \end{pmatrix}\]</span> and <span class="math inline">\(|{n,+}\rangle\)</span> is the eigenvector of <span class="math inline">\(\sigma\cdot\mathbf{p}\)</span> correspond to eigenvalue +1. Therefore, <span class="math display">\[\mathcal{H}|{n,+}\rangle_1=\begin{pmatrix}
+            m_0c^2I&amp;p\sigma\cdot\mathbf{n}\\
+            p\sigma\cdot\mathbf{n}&amp;-m_0c^2I
+        \end{pmatrix}\begin{pmatrix}
+            |{n,+}\rangle\\0
+        \end{pmatrix}=\begin{pmatrix}
+            m_0c^2I|{n,+}\rangle\\ cp\sigma\cdot\mathbf{p}|{n,+}\rangle
+        \end{pmatrix}=m_0c^2|{n,+}\rangle_1+cp|{n,+}\rangle_2\]</span> Similarly, we can yield <span class="math display">\[\begin{aligned}
+        \mathcal{H}|{n,+}\rangle_2&amp;=cp|{n,+}\rangle_1-m_0c^2|{n,+}\rangle_2\\
+        \mathcal{H}|{n,-}\rangle_1&amp;=m_0c^2|{n,-}\rangle_1-cp|{n,-}\rangle_2\\
+        \mathcal{H}|{n,-}\rangle_2&amp;=-cp|{n,-}\rangle_1-m_0c^2|{n,-}\rangle_2
+    \end{aligned}\]</span></p>
+<p>Let <span class="math display">\[|{n,+}\rangle_1=\begin{pmatrix}
+            1\\0\\0\\0
+        \end{pmatrix}\quad
+        |{n,+}\rangle_2=\begin{pmatrix}
+            0\\1\\0\\0
+        \end{pmatrix}\quad
+        |{n,-}\rangle_1=\begin{pmatrix}
+            0\\0\\1\\0
+        \end{pmatrix}\quad
+        |{n,-}\rangle_2=\begin{pmatrix}
+            0\\0\\0\\1
+        \end{pmatrix}\]</span> We can represent <span class="math inline">\(\mathcal{H}\)</span> in a matrix form, <span class="math display">\[\mathcal{H}=\begin{pmatrix}
+            m_0c^2&amp;cp&amp;&amp;\\
+            cp&amp;-m_0c^2&amp;&amp;\\
+            &amp;&amp;m_0c^2&amp;-cp\\
+            &amp;&amp;-cp&amp;-m_0c^2
+        \end{pmatrix}\]</span></p>
+<p>Let's solve the eigenvalue problem. <span class="math display">\[\det(\mathcal{H}-IE)=\det\begin{pmatrix}
+            m_0c^2-E&amp;cp&amp;&amp;\\
+            cp&amp;-m_0c^2-E&amp;&amp;\\
+            &amp;&amp;m_0c^2-E&amp;-cp\\
+            &amp;&amp;-cp&amp;-m_0c^2-E
+        \end{pmatrix}=0\implies (E^2-m_0^2c^4-c^2p^2)^2=0\]</span> Therefore, we get two eigenvalue <span class="math inline">\(E_1=\sqrt{m_0^2c^4+c^2p^2}\)</span> (double root) and <span class="math inline">\(E_2=-\sqrt{m_0^2c^4+c^2p^2}\)</span></p>
+<p>For <span class="math inline">\(E_1=\sqrt{m_0^2c^4+c^2p^2}\)</span>, the linear equation <span class="math inline">\(\mathcal{H}-E_1I=0\)</span> can be reduced to <span class="math display">\[\begin{aligned}
+        &amp;cpx_1-(m_0c^2+E_0)x_2=0\\
+        &amp;-cpx_3-(m_0c^2+E_0)x_4=0
+    \end{aligned}\]</span> Set <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span> as free variables, we can derive the eigenvectors. <span class="math display">\[\xi_1&#39;=\begin{pmatrix}
+            1\\ \frac{cp}{m_0c^2+E_0}\\0\\0
+        \end{pmatrix}\quad
+        \xi_2&#39;=\begin{pmatrix}
+            0\\0\\1\\ \frac{-cp}{m_0c^2+E_0}
+        \end{pmatrix}\]</span></p>
+<p>Similarly, for <span class="math inline">\(E=-E_0\)</span>, we can derive the eigenvectors. <span class="math display">\[\xi_3&#39;=\begin{pmatrix}
+            \frac{-cp}{m_0c^2+E_0}\\1\\0\\0
+        \end{pmatrix}\quad
+        \xi_4&#39;=\begin{pmatrix}
+            0\\0\\ \frac{cp}{m_0c^2+E_0}\\1
+        \end{pmatrix}\]</span></p>
+<h2 id="discussion">Discussion</h2>
+<p>By <span class="math inline">\(\sigma\cdot\mathbf{p}\)</span> representation, we can have a clear understanding of the eigenvalue problem of <span class="math inline">\(\mathcal{H}\)</span>.</p>
+<p>For <span class="math inline">\(E=+E_0\)</span> <span class="math display">\[\xi_1&#39;=\begin{pmatrix}
+            1\\ \frac{cp}{m_0c^2+E_0}\\0\\0
+        \end{pmatrix}=|{n,+}\rangle_1+\frac{cp}{m_0c^2+E_0}|{n,+}\rangle_2=\begin{pmatrix}
+            |{n,+}\rangle\\\frac{cp}{m_0c^2+E_0}|{n,+}\rangle
+        \end{pmatrix}\]</span> <span class="math display">\[\xi_2&#39;=\begin{pmatrix}
+            0\\0\\1\\ \frac{-cp}{m_0c^2+E_0}
+        \end{pmatrix}=|{n,-}\rangle_1- \frac{cp}{m_0c^2+E_0}|{n,-}\rangle_2=\begin{pmatrix}
+            |{n,-}\rangle\\ \frac{-cp}{m_0c^2+E_0}|{n,-}\rangle
+        \end{pmatrix}\]</span></p>
+<p>For <span class="math inline">\(E=-E_0\)</span> <span class="math display">\[\xi_3&#39;=\begin{pmatrix}
+            \frac{-cp}{m_0c^2+E_0}\\1\\0\\0
+        \end{pmatrix}= \frac{-cp}{m_0c^2+E_0}|{n,+}\rangle_1+|{n,+}\rangle_2=\begin{pmatrix}
+            \frac{-cp}{m_0c^2+E_0}|{n,+}\rangle\\ |{n,+}\rangle
+        \end{pmatrix}\]</span></p>
+<p><span class="math display">\[\xi_4&#39;=\begin{pmatrix}
+            0\\0\\ \frac{cp}{m_0c^2+E_0}\\1
+        \end{pmatrix}= \frac{cp}{m_0c^2+E_0}|{n,-}\rangle_1+|{n,-}\rangle_2=\begin{pmatrix}
+            \frac{cp}{m_0c^2+E_0}|{n,-}\rangle\\ |{n,-}\rangle
+        \end{pmatrix}\]</span> These formulas are quite popular in many advanced quantum mechanics books.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/tensor-product/" rel="tag"># tensor product</a>
+              <a href="/blog/tags/Dirac-equation/" rel="tag"># Dirac equation</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/11/14/Fast-Fourier-Transform/" rel="prev" title="Fast Fourier Transform">
+      <i class="fa fa-chevron-left"></i> Fast Fourier Transform
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#some-properties-of-tensor-product"><span class="nav-number">2.</span> <span class="nav-text">Some properties of tensor product</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensor-product-representation"><span class="nav-number">3.</span> <span class="nav-text">Tensor product representation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">3.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pauli-matrix"><span class="nav-number">3.2.</span> <span class="nav-text">Pauli matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#check"><span class="nav-number">3.3.</span> <span class="nav-text">Check</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solve-free-dirac-equation"><span class="nav-number">4.</span> <span class="nav-text">Solve free Dirac equation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wave-function-space"><span class="nav-number">4.1.</span> <span class="nav-text">Wave function space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-base-to-wave-function-space"><span class="nav-number">4.2.</span> <span class="nav-text">The base to wave function space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-representation-of-mathcalh"><span class="nav-number">4.3.</span> <span class="nav-text">Matrix representation of \(\mathcal{H}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem"><span class="nav-number">4.4.</span> <span class="nav-text">Eigenvalue problem</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sigmacdotmathbfp-representation"><span class="nav-number">5.</span> <span class="nav-text">\(\sigma\cdot\mathbf{p}\) Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmacdotmathbfpmathcalh0"><span class="nav-number">5.1.</span> <span class="nav-text">\([\sigma\cdot\mathbf{p},\mathcal{H}]&#x3D;0\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem-of-sigmacdotmathbfp"><span class="nav-number">5.2.</span> <span class="nav-text">Eigenvalue problem of \(\sigma\cdot\mathbf{p}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem-of-mathcalh"><span class="nav-number">5.3.</span> <span class="nav-text">Eigenvalue problem of \(\mathcal{H}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discussion"><span class="nav-number">5.4.</span> <span class="nav-text">Discussion</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yuhan Wu"
+      src="https://raw.githubusercontent.com/YuhanWu314/Picture/main/touxiang.gif">
+  <p class="site-author-name" itemprop="name">Yuhan Wu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuhan Wu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/blog/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
