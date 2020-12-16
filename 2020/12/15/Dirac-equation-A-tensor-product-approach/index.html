@@ -28,7 +28,7 @@
 <meta property="og:description" content="Introduction This article is aimed to use tensor product to represent the Dirac equation, then I will show a detailed solution of the free particle. When I first learn Dirac equation, I am quite conf">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-15T08:03:21.000Z">
-<meta property="article:modified_time" content="2020-12-15T08:12:48.663Z">
+<meta property="article:modified_time" content="2020-12-16T01:22:17.257Z">
 <meta property="article:author" content="Yuhan Wu">
 <meta property="article:tag" content="tensor product">
 <meta property="article:tag" content="Dirac equation">
@@ -189,10 +189,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-12-15 16:03:21 / Modified: 16:12:48" itemprop="dateCreated datePublished" datetime="2020-12-15T16:03:21+08:00">2020-12-15</time>
+              <time title="Created: 2020-12-15 16:03:21" itemprop="dateCreated datePublished" datetime="2020-12-15T16:03:21+08:00">2020-12-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-16 09:22:17" itemprop="dateModified" datetime="2020-12-16T09:22:17+08:00">2020-12-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -216,7 +222,8 @@
       
         <h1 id="introduction">Introduction</h1>
 <p>This article is aimed to use tensor product to represent the Dirac equation, then I will show a detailed solution of the free particle. When I first learn Dirac equation, I am quite confused about the notation, such as <span class="math inline">\(\alpha\cdot\mathbf{p}\)</span>, and how do spinor operator <span class="math inline">\(\alpha\)</span> interact with momentum operator <span class="math inline">\(\mathbf{p}\)</span>? By using tensor product representation, we can avoid this ambiguity, and we can clear see how these operators act on wave functions. In this way, the operator <span class="math inline">\(\alpha\cdot p\)</span> should be view as tensor product of two operator <span class="math display">\[\alpha\cdot\mathbf{p}={\alpha_1}\otimes{p_1}+{\alpha_2}\otimes{p_2}+{\alpha_3}\otimes{p_3}\]</span> In this article, if we use Dirac representation, the <span class="math inline">\(\alpha_i\)</span> can be represented by <span class="math inline">\({\sigma_1}\otimes{\sigma_i}\)</span>, and the wave function can be represented by <span class="math display">\[\psi=\chi_1\otimes\chi_2\otimes\phi_p\]</span></p>
-<p>To read this article, the reader should be familiar with tensor product and eigenvalue problem. If you are unfamiliar with these topics, I highly recommend you to read my another article <em>Construction of tensor product</em> and <em>Linear equations and eigenvalue problems</em> first. <a id="more"></a> # Derivation of Dirac equation</p>
+<p>To read this article, the reader should be familiar with tensor product and eigenvalue problem. If you are unfamiliar with these topics, I highly recommend you to read my another article <em>Construction of tensor product</em> and <em>Linear equations and eigenvalue problems</em> first. <a id="more"></a>]</p>
+<h1 id="derivation-of-dirac-equation">Derivation of Dirac equation</h1>
 <p>The relativistic energy <span class="math inline">\(E=p^2c^2+m_0^2c^4\)</span>, so we assume the square of Hamiltonian operator <span class="math display">\[\mathcal{H}^2=c^2\mathbf{p}^2+m_0^2c^4\]</span> To solve <span class="math inline">\(\mathcal{H}\)</span>, we assume <span class="math display">\[\mathcal{H}=c\alpha\cdot\mathbf{p}+\beta m_0c^2\]</span> Therefore, <span class="math display">\[\begin{aligned}
         \mathcal{H}^2=(c\alpha\cdot\mathbf{p})^2&amp;=c^2[\alpha_1^2p_1^2+\alpha_2^2p_2^2+\alpha_3^2p_3^2+(\alpha_1\alpha_2+\alpha_2\alpha_1)p_1p_2+(\alpha_1\alpha_3+\alpha_3\alpha_1)p_1p_3+(\alpha_2\alpha_3+\alpha_3\alpha_2)p_2p_3]\\
         &amp;+m_0c^3[(\alpha_1\beta+\beta\alpha_1)p_1+(\alpha_2\beta+\beta\alpha_2)p_2+(\alpha_3\beta+\beta\alpha_3)p_3]+\beta^2m_0c^4\\
@@ -276,7 +283,7 @@
         \end{pmatrix}\]</span></p>
 <p>It is easily to verify</p>
 <ol type="1">
-<li><p><span class="math inline">\(\sigma_1^2=\sigma_2^2\sigma_3^2=I\)</span></p></li>
+<li><p><span class="math inline">\(\sigma_1^2=\sigma_2^2=\sigma_3^2=I\)</span></p></li>
 <li><p><span class="math inline">\(\sigma_i\sigma_j+\sigma_j\sigma_i=0\)</span>, if <span class="math inline">\(i\neq j\)</span></p></li>
 <li><p><span class="math inline">\(\sigma_i\sigma_j=\sum_k\epsilon_{ijk}\sigma_k\)</span>, if <span class="math inline">\(i\neq j\)</span>, <span class="math inline">\(\epsilon_{ijk}\)</span> is Levi-Civita tensor.</p></li>
 </ol>
@@ -431,7 +438,7 @@
         &amp;=0
     \end{aligned}\]</span> To verify the last step, we fix k=1. <span class="math inline">\(\epsilon_{ij1}=1\)</span> for i=2 and j=3; <span class="math inline">\(\epsilon_{ij1}=-1\)</span> for i=3,j=2; and <span class="math inline">\(\epsilon_{ij1}=0\)</span>, otherwise. <span class="math display">\[\sum_{i,j}{\sigma_1}\otimes{2\epsilon_{ij1}\sigma_k}\otimes{p_ip_j}={\sigma_1}\otimes{2\sigma_1}\otimes{p_1p_2}+{\sigma_1}\otimes{-2\sigma_2}\otimes{p_1p_2}=0\]</span></p>
 <p>Second step, <span class="math display">\[\begin{aligned}
-&amp;=[\sum_{i=1}^3{I_1}\otimes{\sigma_i}\otimes{p_i},{\sigma_3}\otimes{I_2}\otimes{T_p}]\\
+[\sigma\cdot\mathbf{p},\beta]&amp;=[\sum_{i=1}^3{I_1}\otimes{\sigma_i}\otimes{p_i},{\sigma_3}\otimes{I_2}\otimes{I_p}]\\
         &amp;=\sum_{i=1}^3\{ {I_1\sigma_3}\otimes{\sigma_iI_2}\otimes{p_iI_p}-{\sigma_3I_1}\otimes{I_2\sigma_i}\otimes{I_pp_i}\}\\
         &amp;=0
     \end{aligned}\]</span></p>
@@ -646,7 +653,7 @@ For <span class="math inline">\(\lambda=1\)</span>, the linear equation <span cl
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#some-properties-of-tensor-product"><span class="nav-number">2.</span> <span class="nav-text">Some properties of tensor product</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensor-product-representation"><span class="nav-number">3.</span> <span class="nav-text">Tensor product representation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">3.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pauli-matrix"><span class="nav-number">3.2.</span> <span class="nav-text">Pauli matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#check"><span class="nav-number">3.3.</span> <span class="nav-text">Check</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solve-free-dirac-equation"><span class="nav-number">4.</span> <span class="nav-text">Solve free Dirac equation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wave-function-space"><span class="nav-number">4.1.</span> <span class="nav-text">Wave function space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-base-to-wave-function-space"><span class="nav-number">4.2.</span> <span class="nav-text">The base to wave function space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-representation-of-mathcalh"><span class="nav-number">4.3.</span> <span class="nav-text">Matrix representation of \(\mathcal{H}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem"><span class="nav-number">4.4.</span> <span class="nav-text">Eigenvalue problem</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sigmacdotmathbfp-representation"><span class="nav-number">5.</span> <span class="nav-text">\(\sigma\cdot\mathbf{p}\) Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmacdotmathbfpmathcalh0"><span class="nav-number">5.1.</span> <span class="nav-text">\([\sigma\cdot\mathbf{p},\mathcal{H}]&#x3D;0\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem-of-sigmacdotmathbfp"><span class="nav-number">5.2.</span> <span class="nav-text">Eigenvalue problem of \(\sigma\cdot\mathbf{p}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem-of-mathcalh"><span class="nav-number">5.3.</span> <span class="nav-text">Eigenvalue problem of \(\mathcal{H}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discussion"><span class="nav-number">5.4.</span> <span class="nav-text">Discussion</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#derivation-of-dirac-equation"><span class="nav-number">2.</span> <span class="nav-text">Derivation of Dirac equation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#some-properties-of-tensor-product"><span class="nav-number">3.</span> <span class="nav-text">Some properties of tensor product</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensor-product-representation"><span class="nav-number">4.</span> <span class="nav-text">Tensor product representation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">4.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pauli-matrix"><span class="nav-number">4.2.</span> <span class="nav-text">Pauli matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#check"><span class="nav-number">4.3.</span> <span class="nav-text">Check</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solve-free-dirac-equation"><span class="nav-number">5.</span> <span class="nav-text">Solve free Dirac equation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wave-function-space"><span class="nav-number">5.1.</span> <span class="nav-text">Wave function space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-base-to-wave-function-space"><span class="nav-number">5.2.</span> <span class="nav-text">The base to wave function space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-representation-of-mathcalh"><span class="nav-number">5.3.</span> <span class="nav-text">Matrix representation of \(\mathcal{H}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem"><span class="nav-number">5.4.</span> <span class="nav-text">Eigenvalue problem</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sigmacdotmathbfp-representation"><span class="nav-number">6.</span> <span class="nav-text">\(\sigma\cdot\mathbf{p}\) Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmacdotmathbfpmathcalh0"><span class="nav-number">6.1.</span> <span class="nav-text">\([\sigma\cdot\mathbf{p},\mathcal{H}]&#x3D;0\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem-of-sigmacdotmathbfp"><span class="nav-number">6.2.</span> <span class="nav-text">Eigenvalue problem of \(\sigma\cdot\mathbf{p}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigenvalue-problem-of-mathcalh"><span class="nav-number">6.3.</span> <span class="nav-text">Eigenvalue problem of \(\mathcal{H}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discussion"><span class="nav-number">6.4.</span> <span class="nav-text">Discussion</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
